@@ -14,10 +14,12 @@ export default function HeroTwo() {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     container: containerRef,
-    offset: ['start start', 'end start']
+    // Start when this section's top hits the viewport center,
+    // finish when this section's center hits the viewport center
+    offset: ['start center', 'center center']
   });
-  // Reading progress finishes by the middle of the screen
-  const progress = useTransform(scrollYProgress, [0, 0.2, 1], [0, 1, 1]);
+  // Use this adjusted progress directly (0..1 in the desired window)
+  const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   // Per-word reveal component
   function Word({ text, index, total }: { text: string; index: number; total: number }) {
@@ -52,7 +54,7 @@ export default function HeroTwo() {
     <section ref={sectionRef} className="h-screen snap-start flex items-center justify-center bg-black px-6">
       <div className="max-w-5xl mx-auto text-center">
         <p className="tracking-[0.35em] text-xs md:text-sm uppercase mb-6">
-          <TextReveal text="A NEW DAWN FOR THE INTERNET FINANCIAL SYSTEM" />
+          <TextReveal text="POWERING PARALLEL ECONOMIES FOR THE GLOBAL SOUTH" />
         </p>
 
         <h2 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-medium leading-relaxed md:leading-relaxed lg:leading-[1.2]">
