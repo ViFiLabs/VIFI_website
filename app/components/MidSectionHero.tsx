@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 export default function MidSectionHero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -18,7 +18,9 @@ export default function MidSectionHero() {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     container: containerRef,
-    offset: ['start center', 'center center']
+    // Begin when section top hits 75% of viewport height and
+    // complete when section bottom hits the same 75% line (longer window so it's visible)
+    offset: ['start 75%', 'end 75%']
   });
 
   useEffect(() => {
@@ -32,13 +34,14 @@ export default function MidSectionHero() {
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  // Strike-through grows first
-  const strikeProgress = useTransform(scrollYProgress, [0, 0.35], [0, 1]);
+  // Strike-through grows first (center the action roughly in the middle of the window)
+  const strikeProgress = useTransform(scrollYProgress, [0.15, 0.45], [0, 1]);
   // Then "Unseen" fades away
-  const unseenOpacity = useTransform(scrollYProgress, [0.35, 0.6], [1, 0]);
+  const unseenOpacity = useTransform(scrollYProgress, [0.45, 0.65], [1, 0]);
   // "Majority" slides left to occupy the gap of the removed word
   const gap = 16; // px spacing approximation between words
-  const majorityX = useTransform(scrollYProgress, [0.55, 1], [0, -(unseenWidth + gap)]);
+  const majorityShift = useTransform(scrollYProgress, [0.6, 0.95], [0, -(unseenWidth + gap)]);
+  const majorityX = useSpring(majorityShift, { stiffness: 180, damping: 26, mass: 0.3 });
 
   return (
     <section ref={sectionRef} className="h-screen bg-sky-400 snap-start flex items-center">
@@ -59,7 +62,7 @@ export default function MidSectionHero() {
               {/* Strike line */}
               <motion.span
                 style={{ scaleX: strikeProgress }}
-                className="absolute left-0 top-1/2 -translate-y-1/2 h-[0.08em] w-full bg-white origin-left"
+                className="absolute left-0 top-1/2 -translate-y-1/2 h-[0.08em] w-full bg-white origin-left z-10"
               />
             </motion.span>
 
