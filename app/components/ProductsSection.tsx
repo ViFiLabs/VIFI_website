@@ -10,41 +10,31 @@ interface ProductCardProps {
   children: React.ReactNode;
   index: number;
   totalCards: number;
-  containerRef: React.RefObject<HTMLElement | null>;
-  isLast?: boolean;
 }
 
-function ProductCard({ children, index, totalCards, containerRef, isLast = false }: ProductCardProps) {
+function ProductCard({ children, index, totalCards }: ProductCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    // Ensure we listen to the actual page scroll container
-    container: containerRef,
     offset: ['start start', 'end start']
   });
 
-  // Keep card static for the first half of the wrapper's scroll,
-  // then slightly scale and round as the next card overlaps.
-  // Wrapper is 200vh tall (except last), so progress ~0.5 is the overlap moment.
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.92]);
-  const borderRadius = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 24]);
+  // Scale and transform effects as card gets covered
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  const borderRadius = useTransform(scrollYProgress, [0, 1], [0, 16]);
+
+  const targetScale = 1 - (totalCards - index) * 0.05;
 
   return (
-    <div
-      ref={cardRef}
-      className="w-full"
-      style={{ height: isLast ? '100vh' : '200vh', zIndex: index + 1 }}
-    >
+    <div ref={cardRef} className="h-screen sticky top-0" style={{ zIndex: index }}>
       <motion.div
         style={{
-          scale,
+          scale: index === totalCards - 1 ? scale : targetScale,
           borderRadius,
           transformOrigin: 'top center',
-          // Ensure newer cards appear above older ones
-          zIndex: index + 1,
         }}
-        className="sticky top-0 h-screen w-full overflow-hidden will-change-transform"
+        className="h-full w-full will-change-transform origin-top"
       >
         {children}
       </motion.div>
@@ -53,12 +43,6 @@ function ProductCard({ children, index, totalCards, containerRef, isLast = false
 }
 
 export default function ProductsSection() {
-  // Find the page's scroll container (set in app/page.tsx)
-  const initialContainer = typeof document !== 'undefined'
-    ? (document.querySelector('[data-scroll-container="main"]') as HTMLElement | null)
-    : null;
-  const containerRef = useRef<HTMLElement | null>(initialContainer);
-
   const products = [
     <ProductOneramp key="oneramp" />,
     <ProductReserveX key="reservex" />,
@@ -66,14 +50,12 @@ export default function ProductsSection() {
   ];
 
   return (
-    <div className="relative isolate">
+    <div className="relative">
       {products.map((product, index) => (
         <ProductCard
           key={index}
           index={index}
           totalCards={products.length}
-          containerRef={containerRef}
-          isLast={index === products.length - 1}
         >
           {product}
         </ProductCard>
