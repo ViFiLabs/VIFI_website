@@ -20,21 +20,19 @@ function ProductCard({ children, index, totalCards }: ProductCardProps) {
     offset: ['start start', 'end start']
   });
 
-  // Scale and transform effects as card gets covered
+  // Scale and transform effects as card gets covered by the next card
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
   const borderRadius = useTransform(scrollYProgress, [0, 1], [0, 16]);
 
-  const targetScale = 1 - (totalCards - index) * 0.05;
-
   return (
-    <div ref={cardRef} className="h-screen sticky top-0" style={{ zIndex: index }}>
+    <div ref={cardRef} className="h-screen sticky top-0 w-full" style={{ zIndex: index }}>
       <motion.div
         style={{
-          scale: index === totalCards - 1 ? scale : targetScale,
+          scale,
           borderRadius,
           transformOrigin: 'top center',
         }}
-        className="h-full w-full will-change-transform origin-top"
+        className="h-full w-full will-change-transform origin-top overflow-hidden"
       >
         {children}
       </motion.div>
