@@ -51,7 +51,7 @@ export default function HeroTwo() {
   }
 
   return (
-    <section ref={sectionRef} className="h-screen snap-start flex items-center justify-center bg-black px-6">
+    <section ref={sectionRef} className="h-screen snap-start flex items-center justify-center bg-orange-400 px-6">
       <div className="max-w-5xl mx-auto text-center">
         <p className="tracking-[0.35em] text-xs md:text-sm uppercase mb-6">
           <TextReveal text="POWERING PARALLEL ECONOMIES FOR THE GLOBAL SOUTH" />

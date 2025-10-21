@@ -3,7 +3,7 @@ import HeroTwo from './components/HeroTwo';
 import ProductsSection from './components/ProductsSection';
 import MidSectionHero from './components/MidSectionHero';
 import About from './components/About';
-import Blogs from './components/Blogs';
+import Footer from './components/Footer';
 
 export default function Home() {
   return (
@@ -33,7 +33,7 @@ export default function Home() {
 
       {/* Blogs Section */}
       <div className="snap-start">
-        <Blogs />
+        <Footer />
       </div>
     </div>
   );

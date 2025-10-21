@@ -24,7 +24,7 @@ export default function About() {
     <div ref={aboutRef} className="h-[200vh] w-full">
       <motion.section
         style={{ scale, borderRadius }}
-        className="h-screen bg-cyan-400 flex items-center justify-center sticky top-0 overflow-hidden will-change-transform"
+        className="h-screen bg-orange-400 flex items-center justify-center sticky top-0 overflow-hidden will-change-transform"
       >
         <h1 className="text-6xl font-bold text-white">Contact US</h1>
       </motion.section>

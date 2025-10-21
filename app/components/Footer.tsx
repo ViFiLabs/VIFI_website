@@ -1,4 +1,4 @@
-export default function Blogs() {
+export default function Footer() {
   return (
     <>
     <div className="relative min-h-[200vh]">
