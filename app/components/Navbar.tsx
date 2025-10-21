@@ -59,6 +59,7 @@ export default function Navbar() {
   }, []);
 
   return (
+    <>
     <motion.nav
       initial={{ y: 0, opacity: 1 }}
       animate={{ y: visible ? 0 : -80, opacity: visible ? 1 : 0 }}
@@ -74,21 +75,27 @@ export default function Navbar() {
           </div>
 
           {/* Center: Links */}
+          <div>
           <ul className="hidden md:flex items-center gap-16 lg:gap-20 text-sm text-gray-300">
             <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
             <li><a href="#partners" className="hover:text-white transition-colors">Partners</a></li>
             <li><a href="#blog" className="hover:text-white transition-colors">Blog</a></li>
           </ul>
+          </div>
 
-          {/* Right: CTA */}
-          <a
-            href="#products"
-            className="group inline-flex items-center gap-3 px-5 py-2 text-sm text-white/90 hover:text-white hover:border-white/60 transition-colors"
-          >
-            <span>Explore products</span>
-          </a>
         </div>
       </div>
     </motion.nav>
+    {/* Fixed CTA, always visible and independent of navbar visibility */}
+    <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
+      <a
+        href="#products"
+        aria-label="Explore products"
+        className="group inline-flex items-center gap-3 px-5 py-2 text-sm text-white/90 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/0 hover:bg-white/5"
+      >
+        <span>Explore products</span>
+      </a>
+    </div>
+    </>
   );
 }
