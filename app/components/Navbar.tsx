@@ -67,25 +67,25 @@ export default function Navbar() {
       className="fixed inset-x-0 top-0 z-50"
     >
       <div className="w-full px-[clamp(48px,8vw,160px)]">
-        <div className="h-20 flex items-center justify-around">
-          {/* Left: Logo + wordmark */}
-          <div className="flex items-center gap-3">
-            <img src="/vifilogo.svg" alt="VIFILABS logo mark" className="h-7 w-auto" />
-            <img src="/vifilabs-text.svg" alt="VIFILABS" className="h-4 w-auto" />
-          </div>
-
+        <div className="h-20 flex items-center justify-center">
           {/* Center: Links */}
           <div>
-          <ul className="hidden md:flex items-center gap-16 lg:gap-20 text-sm text-gray-300">
-            <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-            <li><a href="#partners" className="hover:text-white transition-colors">Partners</a></li>
-            <li><a href="#blog" className="hover:text-white transition-colors">Blog</a></li>
-          </ul>
+            <ul className="hidden md:flex items-center gap-16 lg:gap-20 text-sm text-gray-300">
+              <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
+              <li><a href="#partners" className="hover:text-white transition-colors">Partners</a></li>
+              <li><a href="#blog" className="hover:text-white transition-colors">Blog</a></li>
+            </ul>
           </div>
-
         </div>
       </div>
     </motion.nav>
+    {/* Fixed Logo + Wordmark, always visible and independent of navbar visibility */}
+    <div className="fixed top-0 z-[60] h-20 flex items-center left-[clamp(48px,8vw,160px)]">
+      <div className="flex items-center gap-3">
+        <img src="/vifilogo.svg" alt="VIFILABS logo mark" className="h-7 w-auto" />
+        <img src="/vifilabs-text.svg" alt="VIFILABS" className="h-4 w-auto" />
+      </div>
+    </div>
     {/* Fixed CTA, always visible and independent of navbar visibility */}
     <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
       <a
