@@ -71,9 +71,8 @@ export default function Navbar() {
           {/* Center: Links */}
           <div>
             <ul className="hidden md:flex items-center gap-16 lg:gap-20 text-sm text-gray-300">
-              <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#partners" className="hover:text-white transition-colors">Partners</a></li>
-              <li><a href="#blog" className="hover:text-white transition-colors">Blog</a></li>
+              <li><a href="/about" className="hover:text-white transition-colors">About</a></li>
+              <li><a href="/blog" className="hover:text-white transition-colors">Blog</a></li>
             </ul>
           </div>
         </div>
@@ -82,14 +81,16 @@ export default function Navbar() {
     {/* Fixed Logo + Wordmark, always visible and independent of navbar visibility */}
     <div className="fixed top-0 z-[60] h-20 flex items-center left-[clamp(48px,8vw,160px)]">
       <div className="flex items-center gap-3">
+        <a href="/" aria-label="VIFILABS home" className="flex items-center gap-2">
         <img src="/vifilogo.svg" alt="VIFILABS logo mark" className="h-7 w-auto" />
         <img src="/vifilabs-text.svg" alt="VIFILABS" className="h-4 w-auto" />
+        </a>
       </div>
     </div>
     {/* Fixed CTA, always visible and independent of navbar visibility */}
     <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
       <a
-        href="#products"
+        href="/products"
         aria-label="Explore products"
         className="group inline-flex items-center gap-3 px-5 py-2 text-sm text-white/90 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/0 hover:bg-white/5"
       >
