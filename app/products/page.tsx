@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import ProductHero from "./ProductsHero";
-import ProductsSection from "../components/ProductsSection";
+import ProductsSection from "./ProductsSection";
 export default function ProductsPage() {
   return (
     <div className="overflow-y-scroll h-screen" data-scroll-container="main">
