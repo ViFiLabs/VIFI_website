@@ -8,17 +8,17 @@ import ProductVIFIFX from './ProductVIFIFX';
 
 export default function ProductsSection() {
   const products = useMemo(() => [
-    <ProductOneramp key="oneramp" />,
+    <ProductVIFIFX key="vififx" />,
     <ProductReserveX key="reservex" />,
-    <ProductVIFIFX key="vififx" />
+    <ProductOneramp key="oneramp" />
   ], []);
 
   // Labels and colors for the rails (left/right tabs)
-  const titles = useMemo(() => ["oneRamp","reserveX", "vifiFX",  ], []);
+  const titles = useMemo(() => ["vifiFX", "reserveX", "oneRamp"], []);
   const colors = useMemo(() => [
-    '#2B7FFF', // blue for oneRamp
-    '#FDC800', // yellow for reserveX
-    '#FC64B6', // pink for vifiFX
+    '#1c392f', // dark green for vifiFX
+    '#296450', // green for reserveX
+    '#216e54', // light green for oneRamp
   ], []);
 
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -101,7 +101,7 @@ export default function ProductsSection() {
               <motion.div
                 key={i}
                 style={{ x, left: leftGutter, width: `calc(100% - ${leftGutter + rightGutter}px)` }}
-                className="absolute top-0 bottom-0 h-full"
+                className="absolute top-0 bottom-0 h-full overflow-hidden rounded-l-xl"
                 // Later slides are above earlier ones so they slide over
                 
               >

@@ -26,6 +26,11 @@ export default function Home() {
       {/* Products Section - Horizontal stack */}
       <ProductsSection />
 
+         {/* Blogs }
+      <div className="snap-start">
+        <Blogs />
+      </div >
+
       {/* Mid Section Hero (parallax slide over) */}
       <div className="relative h-[200vh] snap-start">
         <div className="sticky top-0 h-screen">
@@ -38,10 +43,7 @@ export default function Home() {
         <About />
       </div>
 
-      {/* Blogs and Footer */}
-      <div className="snap-start">
-        <Blogs />
-      </div >
+   
       <div className="snap-start"> 
       <Footer />
       </div>
