@@ -53,7 +53,9 @@ export default function ProductsSection() {
   const railWidth = 80; // px per tab (Figma spec)
   const railGap = 64;   // px (2rem) horizontal offset between stacked tabs
   const innerGutter = railWidth; // keep a full tab-width gutter between rails and panel
-  const railRadius = 12; // px: matches Tailwind rounded-l-xl (~0.75rem)
+  const railRadius = 20; // px target radius per spec
+  const slowWindowPx = 36; // px of eased slowdown as panel approaches gutter (more pronounced glide)
+  const overshootPxDefault = 6; // tiny overshoot distance for floaty feel
   // Left keeps a margin equal to railGap; right starts at margin 0 (flush to edge)
   const outerMarginLeft = railGap;
   const outerMarginRight = 0;
@@ -88,14 +90,18 @@ export default function ProductsSection() {
 
   return (
     <div ref={sectionRef} className="relative w-full bg-black" style={{ height: totalHeight }}>
-      <div ref={stickyRef} className="sticky top-0 h-screen w-full overflow-hidden rounded-l-xl bg-black">
-        <div className="relative h-full w-full">
+      <div
+        ref={stickyRef}
+        className="sticky top-0 h-screen w-full overflow-hidden rounded-l-[20px] bg-black"
+        style={{ borderTopLeftRadius: railRadius, borderBottomLeftRadius: railRadius }}
+      >
+  <div className="relative h-full w-full" style={{ borderTopLeftRadius: railRadius, borderBottomLeftRadius: railRadius }}>
           {/* Base background fill to eliminate any seams/gaps (match current slide) */}
-          <div className="absolute inset-0 z-0" style={{ backgroundColor: colors[active] }} />
+          <div className="absolute inset-0 z-0" style={{ backgroundColor: colors[active], borderTopLeftRadius: railRadius, borderBottomLeftRadius: railRadius }} />
           {/* Ensure area left of the rails remains blank/background-colored */}
           <div
             className="absolute inset-y-0 left-0 z-0"
-            style={{ width: outerMarginLeft + railRadius + 2, backgroundColor: '#000' }}
+            style={{ width: outerMarginLeft + railRadius + 2, backgroundColor: '#000', borderTopLeftRadius: railRadius, borderBottomLeftRadius: railRadius }}
           />
           {/* Right gutter background matches upcoming slide but only for the width of visible right rails */}
           {(() => {
@@ -118,13 +124,45 @@ export default function ProductsSection() {
             const leftOffset = outerMarginLeft + railWidth + active * railGap + innerGutter;
             const x = i === 0
               ? 0
-              : useTransform(scrollYProgress, [start, end], [Math.max(0, vw - leftOffset), 0]);
+              : (() => {
+                  const fromX = Math.max(0, vw - leftOffset);
+                  const slowPx = Math.min(slowWindowPx, fromX);
+                  const overshootPx = Math.min(overshootPxDefault, Math.max(0, slowPx * 0.6));
+                  const tiny = 1e-6;
+                  return useTransform(scrollYProgress, (v) => {
+                    if (v <= start) return fromX;
+                    if (v >= end) return 0;
+                    const t = (v - start) / Math.max(end - start, tiny); // 0..1
+                    const linEnd = fromX > 0 ? Math.max(0, 1 - slowPx / Math.max(fromX, tiny)) : 0.5; // linear phase end
+                    if (t <= linEnd) {
+                      const linT = linEnd > 0 ? t / linEnd : 1;
+                      return fromX - (fromX - slowPx) * linT;
+                    }
+                    // Remaining time window after linear phase
+                    const rem = Math.max(1 - linEnd, tiny);
+                    // Split remaining time proportionally: approach (slowPx+overshoot) vs recoil (overshoot)
+                    const approachDist = slowPx + overshootPx;
+                    const recoilDist = Math.max(overshootPx, tiny);
+                    const mid = linEnd + rem * (approachDist / (approachDist + recoilDist));
+
+                    if (t <= mid) {
+                      // Approach: ease-out-quint from slowPx -> -overshootPx
+                      const k = (t - linEnd) / Math.max(mid - linEnd, tiny);
+                      const easeOutQuint = 1 - Math.pow(1 - k, 5);
+                      return slowPx - (slowPx + overshootPx) * easeOutQuint;
+                    }
+                    // Recoil: ease-in-out (sine) from -overshootPx -> 0
+                    const k2 = (t - mid) / Math.max(1 - mid, tiny);
+                    const easeInOutSine = (u: number) => 0.5 * (1 - Math.cos(Math.PI * u));
+                    return -overshootPx * (1 - easeInOutSine(k2));
+                  });
+                })();
 
             return (
               <motion.div
                 key={i}
-                style={{ x, left: leftOffset, width: `calc(100% - ${leftOffset}px)` }}
-                className="absolute top-0 bottom-0 z-10 h-full overflow-hidden rounded-l-xl"
+                style={{ x, left: leftOffset, width: `calc(100% - ${leftOffset}px)`, borderTopLeftRadius: railRadius, borderBottomLeftRadius: railRadius }}
+                className="absolute top-0 bottom-0 z-10 h-full overflow-hidden rounded-l-[20px]"
                 // Later slides are above earlier ones so they slide over
                 
               >
@@ -192,7 +230,7 @@ function Rails({
   const rightIndices = Array.from({ length: Math.max(0, count - (active + 1)) }, (_, i) => active + 1 + i);
 
   return (
-    <div className="pointer-events-none absolute inset-0 z-20">
+    <div className="pointer-events-none absolute inset-0 z-20 rounded-l-[20px]" style={{ borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }}>
       {/* Left rails */}
       <div className="absolute inset-y-0 left-0" style={{ width: leftGutter }}>
         {(() => {
@@ -204,7 +242,7 @@ function Rails({
         })()}
         {leftIndices.map((idx, s) => (
           <div key={`L-${idx}`} className="absolute inset-y-0" style={{ left: outerMarginLeft + s * railGap, width: railWidth }}>
-            <div className="h-full rounded-l-xl" style={{ backgroundColor: colors[idx] }} />
+            <div className="h-full rounded-l-[20px]" style={{ backgroundColor: colors[idx], borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }} />
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 text-[11px] tracking-wider text-white/85">
               {titles[idx]}
             </div>
@@ -222,7 +260,7 @@ function Rails({
         })()}
         {[...rightIndices].reverse().map((idx, s) => (
           <div key={`R-${idx}`} className="absolute inset-y-0" style={{ right: s * railGap, width: railWidth }}>
-            <div className="h-full rounded-l-xl" style={{ backgroundColor: colors[idx] }} />
+            <div className="h-full rounded-l-[20px]" style={{ backgroundColor: colors[idx], borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }} />
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 text-[11px] tracking-wider text-white/85">
               {titles[idx]}
             </div>
