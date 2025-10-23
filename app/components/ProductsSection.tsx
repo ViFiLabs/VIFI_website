@@ -52,6 +52,8 @@ export default function ProductsSection() {
   // Layout constants
   const railWidth = 80; // px per tab (Figma spec)
   const railGap = 64;   // px (2rem) horizontal offset between stacked tabs
+  const innerGutter = railWidth; // keep a full tab-width gutter between rails and panel
+  const railRadius = 12; // px: matches Tailwind rounded-l-xl (~0.75rem)
   // Left keeps a margin equal to railGap; right starts at margin 0 (flush to edge)
   const outerMarginLeft = railGap;
   const outerMarginRight = 0;
@@ -84,11 +86,16 @@ export default function ProductsSection() {
   }, [scrollYProgress, count, segment]);
 
   return (
-    <div ref={sectionRef} className="relative w-full" style={{ height: totalHeight }}>
-      <div ref={stickyRef} className="sticky top-0 h-screen w-full overflow-hidden">
+    <div ref={sectionRef} className="relative w-full bg-black" style={{ height: totalHeight }}>
+      <div ref={stickyRef} className="sticky top-0 h-screen w-full overflow-hidden rounded-l-xl bg-black">
         <div className="relative h-full w-full">
           {/* Base background fill to eliminate any seams/gaps (match current slide) */}
-          <div className="absolute inset-0" style={{ backgroundColor: colors[active] }} />
+          <div className="absolute inset-0 z-0" style={{ backgroundColor: colors[active] }} />
+          {/* Ensure area left of the rails remains blank/background-colored */}
+          <div
+            className="absolute inset-y-0 left-0 z-0"
+            style={{ width: outerMarginLeft + railRadius + 2, backgroundColor: '#000' }}
+          />
           {/* Right gutter background matches upcoming slide but only for the width of visible right rails */}
           {(() => {
             const remaining = Math.max(0, count - (active + 1));
@@ -96,7 +103,7 @@ export default function ProductsSection() {
             const width = outerMarginRight + railWidth + Math.max(0, remaining - 1) * railGap;
             return (
               <div
-                className="absolute inset-y-0 right-0"
+                className="absolute inset-y-0 right-0 z-0"
                 style={{ width, backgroundColor: colors[Math.min(active + 1, count - 1)] }}
               />
             );
@@ -106,15 +113,18 @@ export default function ProductsSection() {
             const segment = 1 / products.length;
             const start = Math.max(0, (i - 1) * segment);
             const end = Math.min(1, i * segment);
+            // Landing position aligns to the CURRENT left rail stack plus a fixed inner gutter (80px)
+            // so the panel stops at the first gutter to the right of the rails.
+            const leftOffset = outerMarginLeft + railWidth + active * railGap + innerGutter;
             const x = i === 0
               ? 0
-              : useTransform(scrollYProgress, [start, end], [Math.max(0, vw - leftGutter), 0]);
+              : useTransform(scrollYProgress, [start, end], [Math.max(0, vw - leftOffset), 0]);
 
             return (
               <motion.div
                 key={i}
-                style={{ x, left: leftGutter, width: `calc(100% - ${leftGutter}px)` }}
-                className="absolute top-0 bottom-0 h-full overflow-hidden rounded-l-xl"
+                style={{ x, left: leftOffset, width: `calc(100% - ${leftOffset}px)` }}
+                className="absolute top-0 bottom-0 z-10 h-full overflow-hidden rounded-l-xl"
                 // Later slides are above earlier ones so they slide over
                 
               >
@@ -181,7 +191,7 @@ function Rails({
   const rightIndices = Array.from({ length: Math.max(0, count - (active + 1)) }, (_, i) => active + 1 + i);
 
   return (
-    <div className="pointer-events-none absolute inset-0">
+    <div className="pointer-events-none absolute inset-0 z-20">
       {/* Left rails */}
       <div className="absolute inset-y-0 left-0" style={{ width: leftGutter }}>
         {(() => {
