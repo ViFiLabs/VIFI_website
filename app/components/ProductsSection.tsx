@@ -52,8 +52,8 @@ export default function ProductsSection() {
   // Layout constants
   const railWidth = 88; // px per tab
   const railGap = 64;   // px (2rem) horizontal offset between stacked tabs
-  const outerMarginLeft = 0; // px margin on the left side (flush per request)
-  const outerMarginRight = 0; // px margin on the right side (flush per request)
+  const outerMarginLeft = 24; // px margin from the viewport edge
+  const outerMarginRight = 24; // px margin from the viewport edge
 
   // Reserve max stacking width so layout doesn't shift as stacks grow/shrink
   const maxLeftRails = products.length;      // at the last slide, all tabs visible on the left
@@ -86,16 +86,21 @@ export default function ProductsSection() {
     <div ref={sectionRef} className="relative w-full" style={{ height: totalHeight }}>
       <div ref={stickyRef} className="sticky top-0 h-screen w-full overflow-hidden">
         <div className="relative h-full w-full">
-          {/* Base background fill to eliminate any seams/gaps */}
+          {/* Base background fill to eliminate any seams/gaps (match current slide) */}
           <div className="absolute inset-0" style={{ backgroundColor: colors[active] }} />
+          {/* Right gutter background should match the upcoming slide so previous doesn't peek */}
+          <div
+            className="absolute inset-y-0 right-0"
+            style={{ width: rightGutter, backgroundColor: colors[Math.min(active + 1, count - 1)] }}
+          />
           {products.map((product, i) => {
             // First slide is static at x=0. Subsequent slides slide in from right to left
             const segment = 1 / products.length;
             const start = Math.max(0, (i - 1) * segment);
             const end = Math.min(1, i * segment);
             const x = i === 0
-              ? leftGutter
-              : useTransform(scrollYProgress, [start, end], [vw, leftGutter]);
+              ? 0
+              : useTransform(scrollYProgress, [start, end], [Math.max(0, vw - leftGutter), 0]);
 
             return (
               <motion.div
@@ -119,6 +124,8 @@ export default function ProductsSection() {
             rightGutter={rightGutter}
             railWidth={railWidth}
             railGap={railGap}
+            outerMarginLeft={outerMarginLeft}
+            outerMarginRight={outerMarginRight}
           />
         </div>
       </div>
@@ -134,6 +141,8 @@ function Rails({
   rightGutter,
   railWidth,
   railGap,
+  outerMarginLeft,
+  outerMarginRight,
 }: {
   scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress'];
   titles: string[];
@@ -142,6 +151,8 @@ function Rails({
   rightGutter: number;
   railWidth: number;
   railGap: number;
+  outerMarginLeft: number;
+  outerMarginRight: number;
 }) {
   const count = titles.length;
   const segment = 1 / count;
@@ -157,7 +168,7 @@ function Rails({
 
   // Left side: show previous (including current) stacked from left edge inward
   // Reverse so the first color is outermost (far left), current is nearest content
-  const leftIndices = Array.from({ length: active + 1 }, (_, i) => i).reverse();
+  const leftIndices = Array.from({ length: active + 1 }, (_, i) => i);
   // Right side: show upcoming stacked from right edge inward
   const rightIndices = Array.from({ length: Math.max(0, count - (active + 1)) }, (_, i) => active + 1 + i);
 
@@ -169,16 +180,11 @@ function Rails({
           const lc = leftIndices.length;
           const stackWidth = lc > 0 ? (railWidth + (lc - 1) * railGap) : 0;
           const pad = Math.max(0, leftGutter - stackWidth);
-          const outerColor = lc > 0 ? colors[leftIndices[lc - 1]] : 'transparent';
-          return pad > 0 ? (
-            <div
-              className="absolute inset-y-0 left-0"
-              style={{ width: pad, backgroundColor: outerColor, borderTopRightRadius: 0, borderBottomRightRadius: 0, borderTopLeftRadius: 12, borderBottomLeftRadius: 12 }}
-            />
-          ) : null;
+          // Leave this padding area blank so no extra colored strip appears
+          return pad > 0 ? null : null;
         })()}
         {leftIndices.map((idx, s) => (
-          <div key={`L-${idx}`} className="absolute inset-y-0" style={{ right: s * railGap, width: railWidth }}>
+          <div key={`L-${idx}`} className="absolute inset-y-0" style={{ left: outerMarginLeft + s * railGap, width: railWidth }}>
             <div className="h-full rounded-l-xl" style={{ backgroundColor: colors[idx] }} />
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 text-[11px] tracking-wider text-white/85">
               {titles[idx]}
@@ -193,16 +199,10 @@ function Rails({
           const rc = rightIndices.length;
           const stackWidth = rc > 0 ? (railWidth + (rc - 1) * railGap) : 0;
           const pad = Math.max(0, rightGutter - stackWidth);
-          const outerColor = rc > 0 ? colors[rightIndices[rc - 1]] : 'transparent';
-          return pad > 0 ? (
-            <div
-              className="absolute inset-y-0 right-0"
-              style={{ width: pad, backgroundColor: outerColor }}
-            />
-          ) : null;
+          return pad > 0 ? null : null;
         })()}
-        {rightIndices.map((idx, s) => (
-          <div key={`R-${idx}`} className="absolute inset-y-0" style={{ left: s * railGap, width: railWidth }}>
+        {[...rightIndices].reverse().map((idx, s) => (
+          <div key={`R-${idx}`} className="absolute inset-y-0" style={{ right: s * railGap, width: railWidth }}>
             <div className="h-full rounded-l-xl" style={{ backgroundColor: colors[idx] }} />
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 text-[11px] tracking-wider text-white/85">
               {titles[idx]}
