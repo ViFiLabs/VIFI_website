@@ -122,6 +122,12 @@ export default function ProductsSection() {
             const end = Math.min(1, i * segment);
             // Align to the CURRENT left rails plus inner gutter so panels always meet the rail margin
             const leftOffset = outerMarginLeft + railWidth + active * railGap + innerGutter;
+            // Safe padding on the right so content never sits under the right rails
+            const remainingWhenActive = Math.max(0, count - (i + 1));
+            const rightRailsWidthWhenActive = remainingWhenActive > 0
+              ? (railWidth + Math.max(0, remainingWhenActive - 1) * railGap)
+              : 0;
+            const rightSafePadding = outerMarginRight + rightRailsWidthWhenActive + 24; // +24px breathing space
             const x = i === 0
               ? 0
               : (() => {
@@ -166,7 +172,9 @@ export default function ProductsSection() {
                 // Later slides are above earlier ones so they slide over
                 
               >
-                {product}
+                <div className="h-full w-full pointer-events-auto" style={{ paddingRight: rightSafePadding }}>
+                  {product}
+                </div>
               </motion.div>
             );
           })}
