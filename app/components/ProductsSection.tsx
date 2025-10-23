@@ -50,10 +50,11 @@ export default function ProductsSection() {
   }, []);
 
   // Layout constants
-  const railWidth = 88; // px per tab
+  const railWidth = 80; // px per tab (Figma spec)
   const railGap = 64;   // px (2rem) horizontal offset between stacked tabs
-  const outerMarginLeft = 24; // px margin from the viewport edge
-  const outerMarginRight = 24; // px margin from the viewport edge
+  // Left keeps a margin equal to railGap; right starts at margin 0 (flush to edge)
+  const outerMarginLeft = railGap;
+  const outerMarginRight = 0;
 
   // Reserve max stacking width so layout doesn't shift as stacks grow/shrink
   const maxLeftRails = products.length;      // at the last slide, all tabs visible on the left
@@ -88,11 +89,18 @@ export default function ProductsSection() {
         <div className="relative h-full w-full">
           {/* Base background fill to eliminate any seams/gaps (match current slide) */}
           <div className="absolute inset-0" style={{ backgroundColor: colors[active] }} />
-          {/* Right gutter background should match the upcoming slide so previous doesn't peek */}
-          <div
-            className="absolute inset-y-0 right-0"
-            style={{ width: rightGutter, backgroundColor: colors[Math.min(active + 1, count - 1)] }}
-          />
+          {/* Right gutter background matches upcoming slide but only for the width of visible right rails */}
+          {(() => {
+            const remaining = Math.max(0, count - (active + 1));
+            if (remaining === 0) return null;
+            const width = outerMarginRight + railWidth + Math.max(0, remaining - 1) * railGap;
+            return (
+              <div
+                className="absolute inset-y-0 right-0"
+                style={{ width, backgroundColor: colors[Math.min(active + 1, count - 1)] }}
+              />
+            );
+          })()}
           {products.map((product, i) => {
             // First slide is static at x=0. Subsequent slides slide in from right to left
             const segment = 1 / products.length;
@@ -105,7 +113,7 @@ export default function ProductsSection() {
             return (
               <motion.div
                 key={i}
-                style={{ x, left: leftGutter, width: `calc(100% - ${leftGutter + rightGutter}px)` }}
+                style={{ x, left: leftGutter, width: `calc(100% - ${leftGutter}px)` }}
                 className="absolute top-0 bottom-0 h-full overflow-hidden rounded-l-xl"
                 // Later slides are above earlier ones so they slide over
                 
