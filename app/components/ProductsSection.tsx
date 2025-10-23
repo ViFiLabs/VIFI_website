@@ -79,7 +79,8 @@ export default function ProductsSection() {
   const [active, setActive] = useState(0);
   useEffect(() => {
     const unsub = scrollYProgress.on('change', (v) => {
-      const idx = Math.min(count - 1, Math.max(0, Math.floor(v / segment)));
+      const EPS = 0.002; // delay boundary flip slightly to avoid premature snapping
+      const idx = Math.min(count - 1, Math.max(0, Math.floor((v + EPS) / segment)));
       setActive(idx);
     });
     return () => unsub();
@@ -113,8 +114,7 @@ export default function ProductsSection() {
             const segment = 1 / products.length;
             const start = Math.max(0, (i - 1) * segment);
             const end = Math.min(1, i * segment);
-            // Landing position aligns to the CURRENT left rail stack plus a fixed inner gutter (80px)
-            // so the panel stops at the first gutter to the right of the rails.
+            // Align to the CURRENT left rails plus inner gutter so panels always meet the rail margin
             const leftOffset = outerMarginLeft + railWidth + active * railGap + innerGutter;
             const x = i === 0
               ? 0
@@ -178,7 +178,8 @@ function Rails({
 
   useEffect(() => {
     const unsub = scrollYProgress.on('change', (v) => {
-      const idx = Math.min(count - 1, Math.max(0, Math.floor(v / segment)));
+      const EPS = 0.002;
+      const idx = Math.min(count - 1, Math.max(0, Math.floor((v + EPS) / segment)));
       setActive(idx);
     });
     return () => unsub();
