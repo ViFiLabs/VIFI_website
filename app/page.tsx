@@ -3,7 +3,7 @@ import HeroTwo from './components/HeroTwo';
 import ProductsSection from './components/ProductsSection';
 import MidSectionHero from './components/MidSectionHero';
 import About from './components/About';
-import Blogs from './components/Blogs';
+import Tokenized from './components/Tokenized';
 import Footer from './components/Footer';
 
 export default function Home() {
@@ -25,12 +25,6 @@ export default function Home() {
 
       {/* Products Section - Horizontal stack */}
       <ProductsSection />
-
-         {/* Blogs }
-      <div className="snap-start">
-        <Blogs />
-      </div >
-
       {/* Mid Section Hero (inline 60vh section) */}
       <div className="snap-start">
         <MidSectionHero />
@@ -40,8 +34,9 @@ export default function Home() {
       <div className="snap-start">
         <About />
       </div>
-
-   
+       <div className="snap-start">
+        <Tokenized />
+      </div>
       <div className="snap-start"> 
       <Footer />
       </div>
