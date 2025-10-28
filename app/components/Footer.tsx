@@ -1,9 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
 
 export default function Footer() {
+  const imageRef = useRef<HTMLDivElement | null>(null);
+  const controls = useAnimation();
+  const inView = useInView(imageRef, { amount: 0.45, margin: "-10% 0px -10% 0px" });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ x: 0, rotate: 0, opacity: 1, transition: { duration: 1.1, ease: "easeOut" } });
+    } else {
+      controls.start({ x: -240, rotate: -8, opacity: 0, transition: { duration: 0.6, ease: "easeIn" } });
+    }
+  }, [controls, inView]);
+
   return (
     <>
       <div className="relative min-h-[200vh]">
@@ -18,15 +31,10 @@ export default function Footer() {
               <div className="w-full max-w-[1400px] flex items-center justify-between px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28">
               {/* Left: decorative image */}
               <motion.div
+                ref={imageRef}
                 className="relative h-[clamp(320px,90vh,820px)] w-[clamp(280px,45vw,760px)] flex-shrink-0 self-center ml-0"
                 initial={{ x: -240, rotate: -8, opacity: 0 }}
-                whileInView={{
-                  x: 0,
-                  rotate: 0,
-                  opacity: 1,
-                }}
-                transition={{ duration: 1.1, ease: "easeOut" }}
-                viewport={{ amount: 0.65 }}
+                animate={controls}
               >
                 <Image
                   src="/footer.svg"
