@@ -20,6 +20,7 @@ export default function HeroTwo() {
   });
   // Use this adjusted progress directly (0..1 in the desired window)
   const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const borderProgress = useTransform(progress as MotionValue<number>, [0.35, 0.85], [0, 1], { clamp: true });
 
   // Per-word reveal component
   function Word({ text, index, total }: { text: string; index: number; total: number }) {
@@ -67,7 +68,12 @@ export default function HeroTwo() {
       </div>
 
       {/* Our Products summary */}
-  <div className="mx-auto w-full max-w-6xl border-t border-[#216e54]">
+      <div className="mx-auto w-full max-w-6xl relative">
+        <motion.div
+          className="absolute left-0 top-0 w-full h-px md:h-[2px] bg-[#216e54]/80 origin-left"
+          style={{ scaleX: borderProgress }}
+        />
+        <div aria-hidden="true" className="h-[60px]" />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
           <p className="text-sm md:text-base font-medium text-white/80 text-center md:text-left">Our Products</p>
           <p className="md:col-span-2 text-lg leading-relaxed text-white/70 text-center md:text-left">
