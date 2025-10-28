@@ -9,6 +9,14 @@ export default function Footer() {
   const controls = useAnimation();
   const inView = useInView(imageRef, { amount: 0.45, margin: "-10% 0px -10% 0px" });
 
+  const headingRef = useRef<HTMLDivElement | null>(null);
+  const headingControls = useAnimation();
+  const headingInView = useInView(headingRef, { amount: 0.75, margin: "-5% 0px -15% 0px" });
+
+  const copyRef = useRef<HTMLDivElement | null>(null);
+  const copyControls = useAnimation();
+  const copyInView = useInView(copyRef, { amount: 0.6, margin: "-10% 0px -15% 0px" });
+
   useEffect(() => {
     if (inView) {
       controls.start({ x: 0, rotate: 0, opacity: 1, transition: { duration: 1.1, ease: "easeOut" } });
@@ -17,13 +25,52 @@ export default function Footer() {
     }
   }, [controls, inView]);
 
+  useEffect(() => {
+    if (headingInView) {
+      headingControls.start({ scaleX: 1, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } });
+    } else {
+      headingControls.start({ scaleX: 0, opacity: 0, transition: { duration: 0.5, ease: "easeIn" } });
+    }
+  }, [headingControls, headingInView]);
+
+  useEffect(() => {
+    if (copyInView) {
+      copyControls.start("visible");
+    } else {
+      copyControls.start("hidden");
+    }
+  }, [copyControls, copyInView]);
+
   return (
     <>
       <div className="relative min-h-[200vh]">
         <div className="sticky top-0 h-screen bg-gradient-to-b from-[#191919] to-[#188257] z-20 shadow-xl">
           {/* Heading + rule positioned responsively */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-[clamp(64px,12vh,128px)] flex items-center gap-6">
-            <h1 className="text-5xl md:text-6xl lg:text-6xl font-light">Our Team</h1>
+          <div
+            ref={headingRef}
+            className="absolute left-1/2 -translate-x-1/2 top-[clamp(64px,12vh,128px)] flex items-center gap-6"
+          >
+            <motion.div
+              className="relative h-[2px] w-[clamp(6rem,20vw,24rem)] origin-right bg-emerald-400/60"
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={headingControls}
+            >
+              <span
+                aria-hidden="true"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 h-0 w-0 border-l-[12px] border-l-emerald-400/60 border-y-[7px] border-y-transparent"
+              />
+            </motion.div>
+              <h1 className="whitespace-nowrap text-4xl md:text-6xl lg:text-6xl font-light text-white">Our Team</h1>
+            <motion.div
+              className="relative h-[2px] w-[clamp(6rem,20vw,24rem)] origin-left bg-emerald-400/60"
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={headingControls}
+            >
+              <span
+                aria-hidden="true"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 h-0 w-0 border-r-[12px] border-r-emerald-400/60 border-y-[7px] border-y-transparent"
+              />
+            </motion.div>
           </div>
 
          {/* Outer layout container */}
@@ -46,19 +93,35 @@ export default function Footer() {
                 />
               </motion.div>
 
-             {/* Right: copy block */}
-              <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 justify-center max-w-[min(65ch,480px)] text-white">
+              {/* Right: copy block */}
+              <div
+                ref={copyRef}
+                className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 justify-center max-w-[min(65ch,480px)] text-white"
+              >
+                <motion.p
+                  className="text-base sm:text-lg lg:text-xl leading-relaxed text-neutral-200 mb-12"
+                  variants={{
+                    hidden: { opacity: 0, x: 60 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut", delay: 0.3 } },
+                  }}
+                  initial="hidden"
+                  animate={copyControls}
+                >
+                  We’re not outsiders trying to “unlock” emerging markets. We live here. We build here. Our families transact on
+                  mobile money, buy airtime with USSD, and pool money in group chats. ViFi is what we wish existed five years ago.
+                </motion.p>
 
-                  <div className="h-[2px] w-[clamp(8rem,25vw,28rem)] bg-emerald-400/50 mb-40"  />
-                
-                  <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-neutral-200 mb-12">
-                    We’re not outsiders trying to “unlock” emerging markets. We live here. We build here. Our families transact on mobile money, buy airtime with USSD, and pool money in group chats. ViFi is what we wish existed five years ago.
-                  </p>
-
-                  <p className="text-2xl sm:text-3xl lg:text-4xl leading-none text-white">
-                    Now we’re building it — for everyone else who’s been left out of the system.
-                  </p>
-                
+                <motion.p
+                  className="text-2xl sm:text-3xl lg:text-4xl leading-none text-white"
+                  variants={{
+                    hidden: { opacity: 0, x: 80 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut", delay: 0.65 } },
+                  }}
+                  initial="hidden"
+                  animate={copyControls}
+                >
+                  Now we’re building it — for everyone else who’s been left out of the system.
+                </motion.p>
               </div>
             </div>
             </div>
