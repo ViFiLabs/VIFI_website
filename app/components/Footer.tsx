@@ -7,8 +7,7 @@ export default function Footer() {
         <div className="sticky top-0 h-screen bg-gradient-to-b from-[#191919] to-[#188257] z-20 shadow-xl">
           {/* Heading + rule positioned responsively */}
           <div className="absolute left-1/2 -translate-x-1/2 top-[clamp(64px,12vh,128px)] flex items-center gap-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light">Our Team</h1>
-            <div className="h-[2px] w-[clamp(6rem,10vw,12rem)] bg-emerald-400/50" />
+            <h1 className="text-5xl md:text-6xl lg:text-6xl font-light">Our Team</h1>
           </div>
 
          {/* Outer layout container */}
@@ -27,16 +26,18 @@ export default function Footer() {
               </div>
 
              {/* Right: copy block */}
-              <div className="flex flex-col justify-center max-w-[min(65ch,640px)] text-white">
-                <div>
-                  <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-neutral-200">
+              <div className="flex flex-col gap-y-8 justify-center max-w-[min(65ch,480px)] text-white">
+
+                  <div className="h-[2px] w-[clamp(8rem,25vw,28rem)] bg-emerald-400/50 mb-40"  />
+                
+                  <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-neutral-200 mb-12">
                     We’re not outsiders trying to “unlock” emerging markets. We live here. We build here. Our families transact on mobile money, buy airtime with USSD, and pool money in group chats. ViFi is what we wish existed five years ago.
                   </p>
 
-                  <p className="mt-16 lg:mt-24 text-2xl sm:text-3xl lg:text-4xl leading-snug text-white">
+                  <p className="text-2xl sm:text-3xl lg:text-4xl leading-none text-white">
                     Now we’re building it — for everyone else who’s been left out of the system.
                   </p>
-                </div>
+                
               </div>
             </div>
             </div>
