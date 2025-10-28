@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 
 export default function Home() {
   return (
-    <div className="overflow-y-scroll h-screen" data-scroll-container="main">
+  <div className="h-screen overflow-y-scroll overflow-x-hidden" data-scroll-container="main">
       {/* Hero Section - Page 1 (parallax slide over) */}
       <div className="relative h-[200vh] snap-start">
         <div className="sticky top-0 h-screen">
