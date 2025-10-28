@@ -22,7 +22,7 @@ export default function HeroOne() {
               className="relative flex-1 h-px md:h-[2px] bg-emerald-300/40 origin-left"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ delay: 0.4, duration: 1.6, ease: "easeInOut" }}
+              transition={{ delay: 1.1, duration: 1.6, ease: "easeInOut" }}
             >
               <span
                 className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 h-0 w-0 border-l-[10px] border-l-emerald-300/60 border-y-[6px] border-y-transparent"
@@ -46,9 +46,14 @@ export default function HeroOne() {
           />
 
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <h2 className="text-center text-white font-light leading-tight text-[clamp(36px,6vw,72px)] max-w-[18ch]">
+            <motion.h2
+              className="text-center text-white font-light leading-tight text-[clamp(36px,6vw,72px)] max-w-[18ch]"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            >
               Powering parallel economies for the <span className="text-emerald-300">Global South.</span>
-            </h2>
+            </motion.h2>
           </div>
         </div>
       </div>
