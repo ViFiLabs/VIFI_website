@@ -51,19 +51,30 @@ export default function HeroTwo() {
   }
 
   return (
-    <section ref={sectionRef} className="h-screen snap-start flex items-center justify-center bg-orange-400 px-6">
+    <section
+      ref={sectionRef}
+      className="min-h-screen snap-start flex flex-col justify-around items-center bg-gradient-to-b from-[#192621] to-[#191919] px-6 py-12 md:py-16"
+    >
+       {/* explainer */}
       <div className="max-w-5xl mx-auto text-center">
         <p className="tracking-[0.35em] text-xs md:text-sm uppercase mb-6">
           <TextReveal text="POWERING PARALLEL ECONOMIES FOR THE GLOBAL SOUTH" />
         </p>
 
-        <h2 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-medium leading-relaxed md:leading-relaxed lg:leading-[1.2]">
+        <h2 className="text-2xl md:text-4xl lg:text-4xl xl:text-5xl font-medium leading-relaxed md:leading-relaxed lg:leading-[1.2]">
           <TextReveal text="ViFi Labs is a technology studio that brings emerging market economies. We are bringing emerging market payment and capital networks onchain through our innovative product offerings." />
         </h2>
+      </div>
 
-        <p className="mt-10 text-2xl md:text-3xl font-medium">
-          <TextReveal text="Welcome to VIFILABS." />
-        </p>
+      {/* Our Products summary */}
+  <div className="mx-auto w-full max-w-6xl border-t border-[#216e54]">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
+          <p className="text-sm md:text-base font-medium text-white/80 text-center md:text-left">Our Products</p>
+          <p className="md:col-span-2 text-lg leading-relaxed text-white/70 text-center md:text-left">
+            ViFi Labs delivers the infrastructure that emerging markets need most — FX swaps, tokenized reserves,
+            and seamless remittances — building a borderless financial system designed for the billions still excluded.
+          </p>
+        </div>
       </div>
     </section>
   );

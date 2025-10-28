@@ -31,11 +31,9 @@ export default function Home() {
         <Blogs />
       </div >
 
-      {/* Mid Section Hero (parallax slide over) */}
-      <div className="relative h-[200vh] snap-start">
-        <div className="sticky top-0 h-screen">
-          <MidSectionHero />
-        </div>
+      {/* Mid Section Hero (inline 60vh section) */}
+      <div className="snap-start">
+        <MidSectionHero />
       </div>
 
       {/* About Section (component already handles its own sticky/200vh) */}

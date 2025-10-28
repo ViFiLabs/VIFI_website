@@ -44,7 +44,7 @@ export default function MidSectionHero() {
   const majorityX = useSpring(majorityShift, { stiffness: 180, damping: 26, mass: 0.3 });
 
   return (
-    <section ref={sectionRef} className="h-screen bg-purple-400 snap-start flex items-center">
+    <section ref={sectionRef} className="h-[60vh] bg-black-400 snap-start flex items-center">
       <div className="w-full px-6 sm:px-8 md:px-12">
         <h1 className="text-white font-bold tracking-tight leading-[0.9] text-left text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10vw]">
           <span className="block">A Protocol for</span>
