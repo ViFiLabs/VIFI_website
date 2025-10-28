@@ -54,25 +54,33 @@ export default function HeroTwo() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen snap-start flex flex-col justify-around items-center bg-gradient-to-b from-[#192621] to-[#191919] px-4 py-12 sm:px-6 md:py-16"
+      className="min-h-screen snap-start flex flex-col justify-around items-center bg-gradient-to-b from-[#192621] to-[#191919] py-12 md:py-16"
     >
        {/* explainer */}
-      <div className="max-w-5xl mx-auto w-full text-center px-4 py-10 sm:px-8 md:px-0 md:py-12">
+      <div className="mx-auto w-full max-w-[calc(100vw-40px)] text-center py-10 md:max-w-5xl md:py-12">
         <h2 className="text-2xl md:text-4xl lg:text-4xl xl:text-5xl font-medium leading-relaxed md:leading-relaxed lg:leading-[1.2]">
           <TextReveal text="ViFi Labs is a technology studio that brings emerging market economies. We are bringing emerging market payment and capital networks onchain through our innovative product offerings." />
         </h2>
       </div>
 
       {/* Our Products summary */}
-      <div className="mx-auto w-full max-w-6xl relative px-2 sm:px-6 md:px-0">
+      <div className="mx-auto w-full max-w-[calc(100vw-40px)] md:max-w-6xl relative">
+        <div className="md:hidden w-full text-left mb-6">
+          <p className="text-[30px] leading-[38px] font-medium text-white/80 mb-3">Our Products</p>
+          <motion.div
+            className="h-px bg-[#216e54]/80 origin-left"
+            style={{ scaleX: borderProgress }}
+          />
+        </div>
+
         <motion.div
-          className="absolute left-0 top-0 w-full h-px md:h-[2px] bg-[#216e54]/80 origin-left"
+          className="absolute left-0 top-0 hidden w-full h-px bg-[#216e54]/80 origin-left md:block md:h-[2px]"
           style={{ scaleX: borderProgress }}
         />
-        <div aria-hidden="true" className="h-[60px]" />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8 text-left">
-          <p className="text-sm md:text-base font-medium text-white/80">Our Products</p>
-          <p className="md:col-span-2 text-lg leading-relaxed text-white/70">
+        <div aria-hidden="true" className="hidden h-[60px] md:block" />
+        <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-3 md:gap-8">
+          <p className="hidden text-sm font-medium text-white/80 md:block md:text-base">Our Products</p>
+          <p className="md:col-span-2 text-[18px] leading-[26px] text-white/70 md:text-lg md:leading-relaxed">
             ViFi Labs delivers the infrastructure that emerging markets need most — FX swaps, tokenized reserves,
             and seamless remittances — building a borderless financial system designed for the billions still excluded.
           </p>
