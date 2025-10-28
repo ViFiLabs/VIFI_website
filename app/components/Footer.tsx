@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Footer() {
@@ -14,7 +17,17 @@ export default function Footer() {
             <div className="relative h-full w-full flex items-center justify-between">
               <div className="w-full max-w-[1400px] flex items-center justify-between px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28">
               {/* Left: decorative image */}
-              <div className="relative h-[clamp(320px,90vh,820px)] w-[clamp(280px,45vw,760px)] flex-shrink-0 self-center ml-0">
+              <motion.div
+                className="relative h-[clamp(320px,90vh,820px)] w-[clamp(280px,45vw,760px)] flex-shrink-0 self-center ml-0"
+                initial={{ x: -240, rotate: -8, opacity: 0 }}
+                whileInView={{
+                  x: 0,
+                  rotate: 0,
+                  opacity: 1,
+                }}
+                transition={{ duration: 1.1, ease: "easeOut" }}
+                viewport={{ amount: 0.65 }}
+              >
                 <Image
                   src="/footer.svg"
                   alt="ViFi abstract brand shape"
@@ -23,7 +36,7 @@ export default function Footer() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain object-left"
                 />
-              </div>
+              </motion.div>
 
              {/* Right: copy block */}
               <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 justify-center max-w-[min(65ch,480px)] text-white">
