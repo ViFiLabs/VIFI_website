@@ -35,13 +35,13 @@ export default function About() {
         <div className="mx-auto w-full max-w-6xl bg-white rounded-[inherit] p-6 md:p-10 lg:p-12">
           <motion.div style={{ scale: contentScale }} className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
             {/* Left: Copy */}
-            <div className="space-y-12 md:space-y-14 lg:space-y-16">
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight text-neutral-900">
+            <div className="flex flex-col gap-y-6 sm:gap-y-8 lg:gap-y-8">
+              <p className="text-4xl md:text-2xl lg:text-3xl font-semibold tracking-tight text-neutral-900">
               We’re building ViFi because traditional financial infrastructure wasn’t made for us—or for the 3 billion people navigating informal and mobile-first economies.
-              </h2>
-              <h3 className="text-sm md:text-base lg:text-lg leading-relaxed text-neutral-600">
+              </p>
+              <p className="text-sm md:text-base lg:text-lg leading-relaxed text-neutral-600">
               Emerging markets aren’t just underserved—they’re the future of global growth. There are more mobile wallets than bank accounts. More freelancers than formal employees. A remittance corridor moving over $700B annually—mostly via legacy rails.
-              </h3>
+              </p>
             </div>
 
 

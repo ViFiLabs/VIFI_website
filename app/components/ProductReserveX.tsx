@@ -19,7 +19,7 @@ export default function ProductReserveX() {
         </div>
         {/* Right: Copy */}
         <div className="flex w-full items-center justify-center">
-          <div className="w-full max-w-[560px] text-left md:text-left px-6 md:px-0">
+          <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[560px] text-left md:text-left px-6 md:px-0">
             <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-6xl">reserveX</h2>
             <p className="mb-4 text-base leading-7 md:text-lg md:leading-8 text-white/85">
               Nulla facilisi. Quisque tincidunt dapibus ligula id aliquet. Mauris vulputate nibh sed dolor finibus,
@@ -29,9 +29,9 @@ export default function ProductReserveX() {
               Fusce vitae metus sodales, elementum tortor non, ornare urna. Mauris eget nisl neque. Aliquam sapien ipsum,
               mattis eu neque in, tristique vestibulum diam. Suspendisse finibus, lorem.
             </p>
-            <button className="rounded-full border border-white/30 px-6 py-2.5 text-sm text-white/90 hover:bg-white/10">
+            {/* <button className="rounded-full border border-white/30 px-6 py-2.5 text-sm text-white/90 hover:bg-white/10">
               HOME
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

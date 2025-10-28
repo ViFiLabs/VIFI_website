@@ -26,7 +26,7 @@ export default function Footer() {
               </div>
 
              {/* Right: copy block */}
-              <div className="flex flex-col gap-y-8 justify-center max-w-[min(65ch,480px)] text-white">
+              <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 justify-center max-w-[min(65ch,480px)] text-white">
 
                   <div className="h-[2px] w-[clamp(8rem,25vw,28rem)] bg-emerald-400/50 mb-40"  />
                 
