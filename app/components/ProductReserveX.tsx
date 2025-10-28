@@ -25,7 +25,7 @@ export default function ProductReserveX() {
       ref={sectionRef}
       className="h-full w-full bg-[#296450] text-white py-12 md:py-20"
     >
-      <div className="grid h-full w-full grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 md:gap-16 md:px-12">
+  <div className="grid h-full w-full grid-cols-1 items-center gap-10 px-[20px] md:grid-cols-2 md:gap-16 md:px-12">
         {/* Left: Image */}
         <div className="flex w-full items-center justify-center">
           <motion.div
@@ -44,9 +44,9 @@ export default function ProductReserveX() {
           </motion.div>
         </div>
         {/* Right: Copy */}
-        <div className="flex w-full items-center justify-center">
+        <div className="flex w-full items-center justify-center px-[20px] md:px-0">
           <motion.div
-            className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[560px] text-left md:text-left px-6 md:px-0"
+            className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[calc(100vw-40px)] md:max-w-[560px] text-left"
             initial={{ y: 40, opacity: 0 }}
             animate={copyControls}
           >

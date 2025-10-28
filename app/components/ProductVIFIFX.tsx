@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function ProductVIFIFX() {
   return (
     <section className="h-full w-full bg-[#1c392f] text-white py-12 md:py-20">
-      <div className="grid h-full w-full grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 md:gap-16 md:px-12">
+      <div className="grid h-full w-full grid-cols-1 items-center gap-10 px-[20px] md:grid-cols-2 md:gap-16 md:px-12">
         {/* Left: Image */}
         <motion.div
           className="flex w-full items-center justify-center"
@@ -28,13 +28,13 @@ export default function ProductVIFIFX() {
         </motion.div>
         {/* Right: Copy */}
         <motion.div
-          className="flex w-full items-center justify-center"
+          className="flex w-full items-center justify-center px-[20px] md:px-0"
           initial={{ x: 140, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
           viewport={{ amount: 0.4, once: false }}
         >
-          <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[560px] text-left md:text-left px-6 md:px-0">
+          <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[calc(100vw-40px)] md:max-w-[560px] text-left">
             <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-6xl">vifiFX</h2>
             <p className="mb-4 text-base leading-7 md:text-lg md:leading-8 text-white/85">
               Nulla facilisi. Quisque tincidunt dapibus ligula id aliquet. Mauris vulputate nibh sed dolor finibus,
