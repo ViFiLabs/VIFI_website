@@ -5,11 +5,11 @@ import Image from "next/image";
 
 export default function ProductOneramp() {
   return (
-    <section className="h-full w-full bg-[#216e54] text-white py-12 md:py-20">
-      <div className="grid h-full w-full grid-cols-1 items-center gap-10 px-[20px] md:grid-cols-2 md:gap-16 md:px-12">
+    <section className="h-full w-full bg-[#216e54] text-white pt-24 pb-12 md:py-20">
+  <div className="grid h-full w-full grid-cols-1 items-start gap-0 px-[20px] py-8 md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0">
         {/* Left: Image */}
         <motion.div
-          className="flex w-full items-center justify-center"
+          className="flex w-full items-start justify-center pt-20 -mb-12 md:items-center md:pt-0 md:mb-0"
           initial={{ x: -140, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -21,14 +21,14 @@ export default function ProductOneramp() {
               alt="oneRamp"
               fill
               sizes="(min-width: 1280px) 560px, (min-width: 768px) 40vw, 80vw"
-              className="object-contain"
+              className="object-contain translate-y-10 md:translate-y-0"
               priority
             />
           </div>
         </motion.div>
         {/* Right: Copy */}
         <motion.div
-          className="flex w-full items-center justify-center px-[20px] md:px-0"
+          className="flex w-full items-start justify-center px-[20px] -translate-y-[72px] md:translate-y-0 md:items-center md:px-0"
           initial={{ x: 140, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
