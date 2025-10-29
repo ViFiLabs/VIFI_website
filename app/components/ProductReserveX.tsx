@@ -27,7 +27,7 @@ export default function ProductReserveX() {
     >
   <div className="grid h-full w-full grid-cols-1 items-start gap-0 px-[20px] py-8 md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0">
         {/* Left: Image */}
-        <div className="flex w-full items-start justify-center pt-20 -mb-48 md:items-center md:pt-0 md:mb-0">
+        <div className="flex w-full items-start justify-center pt-[clamp(72px,18vh,120px)] -mb-[clamp(32px,8vh,64px)] md:items-center md:pt-0 md:mb-0">
           <motion.div
             className="relative aspect-[4/3] w-[min(80vw,560px)] md:w-[min(40vw,560px)]"
             initial={{ x: -160, opacity: 0 }}
@@ -38,13 +38,13 @@ export default function ProductReserveX() {
               alt="reserveX"
               fill
               sizes="(min-width: 1280px) 560px, (min-width: 768px) 40vw, 80vw"
-              className="object-contain translate-y-10 md:translate-y-0"
+              className="object-contain translate-y-[clamp(24px,8vh,40px)] md:translate-y-0"
               priority
             />
           </motion.div>
         </div>
         {/* Right: Copy */}
-  <div className="flex w-full items-start justify-center px-[20px] -translate-y-[72px] md:translate-y-0 md:items-center md:px-0">
+  <div className="flex w-full items-start justify-center px-[20px] -translate-y-[clamp(24px,8vh,48px)] md:translate-y-0 md:items-center md:px-0">
           <motion.div
             className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[calc(100vw-40px)] md:max-w-[560px] text-left"
             initial={{ y: 40, opacity: 0 }}
