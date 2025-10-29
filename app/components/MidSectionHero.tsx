@@ -7,6 +7,7 @@ export default function MidSectionHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const unseenRef = useRef<HTMLSpanElement>(null);
   const [unseenWidth, setUnseenWidth] = useState(0);
+  const [shouldAnimate, setShouldAnimate] = useState<boolean | null>(null);
 
   // Bind to the main scroll container used in app/page.tsx
   const initialContainer = typeof document !== 'undefined'
@@ -24,6 +25,9 @@ export default function MidSectionHero() {
   });
 
   useEffect(() => {
+    if (typeof window === 'undefined' || !shouldAnimate) {
+      return;
+    }
     const measure = () => {
       if (unseenRef.current) {
         setUnseenWidth(unseenRef.current.getBoundingClientRect().width);
@@ -32,6 +36,17 @@ export default function MidSectionHero() {
     measure();
     window.addEventListener('resize', measure);
     return () => window.removeEventListener('resize', measure);
+  }, [shouldAnimate]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const mediaQuery = window.matchMedia('(max-width: 640px)');
+    const update = () => setShouldAnimate(!mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener('change', update);
+    return () => mediaQuery.removeEventListener('change', update);
   }, []);
 
   // Strike-through grows first (center the action roughly in the middle of the window)
@@ -44,38 +59,48 @@ export default function MidSectionHero() {
   const majorityX = useSpring(majorityShift, { stiffness: 180, damping: 26, mass: 0.3 });
 
   return (
-    <section ref={sectionRef} className="h-[60vh] bg-black-400 snap-start flex items-center">
+  <section ref={sectionRef} className="h-[40vh] sm:h-[60vh] bg-black-400 snap-start flex items-center">
       <div className="w-full px-6 sm:px-8 md:px-12">
         <h1 className="text-white font-bold tracking-tight leading-[0.9] text-left text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10vw]">
           <span className="block">A Protocol for</span>
 
-          <span className="block">
-            <span className="inline-block">the&nbsp;</span>
+          {(shouldAnimate ?? false) ? (
+            <span className="block">
+              <span className="inline-block">the&nbsp;</span>
 
-            {/* Unseen with strike-through and fade out */}
-            <motion.span
-              ref={unseenRef}
-              style={{ opacity: unseenOpacity }}
-              className="relative inline-block"
-            >
-              Unseen
-              {/* Strike line */}
+              {/* Unseen with strike-through and fade out */}
               <motion.span
-                style={{ scaleX: strikeProgress }}
-                className="absolute left-0 top-1/2 -translate-y-1/2 h-[0.08em] w-full bg-white origin-left z-10"
-              />
-            </motion.span>
+                ref={unseenRef}
+                style={{ opacity: unseenOpacity }}
+                className="relative inline-block"
+              >
+                Unseen
+                {/* Strike line */}
+                <motion.span
+                  style={{ scaleX: strikeProgress }}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 h-[0.08em] w-full bg-white origin-left z-10"
+                />
+              </motion.span>
 
-            {/* Space between words preserved visually */}
-            <span style={{ display: 'inline-block', width: gap }} aria-hidden>
-              
+              {/* Space between words preserved visually */}
+              <span style={{ display: 'inline-block', width: gap }} aria-hidden>
+                
+              </span>
+
+              {/* Majority slides into place */}
+              <motion.span style={{ x: majorityX }} className="inline-block">
+                Majority
+              </motion.span>
             </span>
-
-            {/* Majority slides into place */}
-            <motion.span style={{ x: majorityX }} className="inline-block">
-              Majority
-            </motion.span>
-          </span>
+          ) : (
+            <span className="block">
+              <span className="inline-block">the&nbsp;</span>
+              <span className="inline-block line-through decoration-white decoration-2 md:decoration-4">
+                Unseen
+              </span>
+              <span className="inline-block">&nbsp;Majority</span>
+            </span>
+          )}
         </h1>
       </div>
     </section>
