@@ -79,16 +79,16 @@ export default function Navbar() {
       </div>
     </motion.nav>
     {/* Fixed Logo + Wordmark, always visible and independent of navbar visibility */}
-    <div className="fixed top-0 z-[60] h-20 flex items-center left-[clamp(48px,8vw,160px)]">
+    {/* <div className="fixed top-0 z-[60] h-20 flex items-center left-[clamp(48px,8vw,160px)]">
       <div className="flex items-center gap-3">
         <a href="/" aria-label="VIFILABS home" className="flex items-center gap-2">
         <img src="/vifilogo.svg" alt="VIFILABS logo mark" className="h-7 w-auto" />
         <img src="/vifilabs-text.svg" alt="VIFILABS" className="h-4 w-auto" />
         </a>
       </div>
-    </div>
+    </div> */}
     {/* Fixed CTA, always visible and independent of navbar visibility */}
-    <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
+    {/* <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
       <a
         href="/products"
         aria-label="Explore products"
@@ -96,7 +96,7 @@ export default function Navbar() {
       >
         <span>Explore products</span>
       </a>
-    </div>
+    </div> */}
     </>
   );
 }
