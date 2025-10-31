@@ -54,8 +54,8 @@ export default function HeroOne() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              Powering parallel economies for the{" "}
-              <span className="text-emerald-300">Global South.</span>
+              Bringing emerging market economies {" "}
+              <span className="text-emerald-300"> onchain</span>
             </motion.h2>
           </div>
         </div>
@@ -67,8 +67,8 @@ export default function HeroOne() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          Powering parallel economies for the{" "}
-          <span className="text-emerald-300">Global South.</span>
+          Bringing emerging market economies {" "}
+          <span className="text-emerald-300">onchain</span>
         </motion.h2>
       </div>
 
