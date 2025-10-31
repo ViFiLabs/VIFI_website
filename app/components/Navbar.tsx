@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
@@ -58,6 +58,17 @@ export default function Navbar() {
     };
   }, []);
 
+  const handleExploreClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
+    const container = document.querySelector('[data-scroll-container="main"]') as HTMLElement | null;
+    const target = document.getElementById('hero-two');
+
+    if (container && target) {
+      event.preventDefault();
+      const targetOffset = target.offsetTop;
+      container.scrollTo({ top: targetOffset, behavior: 'smooth' });
+    }
+  }, []);
+
   return (
     <>
     <motion.nav
@@ -90,11 +101,12 @@ export default function Navbar() {
     {/* Fixed CTA, always visible and independent of navbar visibility */}
     <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
       <a
-        href="/products"
+        href="#hero-two"
         aria-label="Explore products"
         className="group relative inline-flex items-center justify-center rounded-full border border-[#E24232] px-6 py-2 text-base bg-[#000000]/20 backdrop-blur-md 
               font-light text-white/90 transition-colors duration-300 overflow-hidden"
         style={{ paddingLeft: "12px", paddingRight: "12px", paddingTop: "8px", paddingBottom: "8px" }}
+        onClick={handleExploreClick}
       >
         <span
           aria-hidden="true"

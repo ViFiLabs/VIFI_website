@@ -17,7 +17,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section - Page 2 (parallax slide over) */}
-      <div className="relative h-[200vh] snap-start">
+      <div className="relative h-[200vh] snap-start" id="hero-two">
         <div className="sticky top-0 h-screen">
           <HeroTwo />
         </div>
