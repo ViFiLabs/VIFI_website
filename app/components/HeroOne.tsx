@@ -6,16 +6,12 @@ import { motion } from "framer-motion";
 export default function HeroOne() {
   return (
     <section
-      className="h-screen snap-start relative bg-cover bg-center bg-no-repeat"
+      className="relative min-h-screen snap-start bg-cover bg-center bg-no-repeat flex flex-col justify-between"
       style={{ backgroundImage: "url('/herobg.png')" }}
     >
-      <div
-        className="absolute inset-0"
-        aria-hidden="true"
-      />
-
-      {/* Centerpiece image */}
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-10 px-5 py-20 sm:px-6 md:gap-0 md:px-10 md:py-0">
+      {/* Top content wrapper */}
+      <div className="flex flex-col items-center justify-center flex-grow px-5 pt-20 pb-24 sm:px-6 md:px-10 md:pb-32 relative z-10">
+        
         {/* Animated culture-to-capital line */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
           <div className="flex items-center w-full max-w-[1200px] gap-4 md:gap-8 px-6">
@@ -39,6 +35,7 @@ export default function HeroOne() {
           </div>
         </div>
 
+        {/* Hero image + text */}
         <div className="relative z-10 w-[min(88vw,420px)] aspect-[3/4] transition-all duration-500 md:w-[min(78vw,980px)] md:aspect-[16/9]">
           <Image
             src="/heroimg.png"
@@ -49,6 +46,7 @@ export default function HeroOne() {
             className="object-contain drop-shadow-2xl"
           />
 
+          {/* Desktop H2 */}
           <div className="absolute inset-0 hidden items-center justify-center pointer-events-none md:flex">
             <motion.h2
               className="text-center text-white font-light leading-tight text-[clamp(36px,6vw,72px)] max-w-[18ch]"
@@ -56,24 +54,27 @@ export default function HeroOne() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              Powering parallel economies for the <span className="text-emerald-300">Global South.</span>
+              Powering parallel economies for the{" "}
+              <span className="text-emerald-300">Global South.</span>
             </motion.h2>
           </div>
         </div>
 
+        {/* Mobile H2 */}
         <motion.h2
-          className="text-center text-white font-light leading-tight text-[clamp(30px,7vw,40px)] max-w-[22ch] md:hidden"
+          className="text-center text-white font-light leading-tight text-[clamp(30px,7vw,40px)] max-w-[22ch] mt-8 md:hidden"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          Powering parallel economies for the <span className="text-emerald-300">Global South.</span>
+          Powering parallel economies for the{" "}
+          <span className="text-emerald-300">Global South.</span>
         </motion.h2>
       </div>
 
-      {/* Backers strip */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-        <div className="relative w-[min(92vw,1100px)] max-w-[640px] md:max-w-none">
+  {/* Backers strip (in normal flow, not absolute) */}
+  <div className="relative z-20 flex justify-center bottom-4 md:bottom-8">
+        <div className="w-[min(92vw,1100px)] max-w-[640px] md:max-w-none">
           <Image
             src="/backed.svg"
             alt="Backed by our partners"
