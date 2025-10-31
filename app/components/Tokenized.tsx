@@ -1,9 +1,9 @@
 export default function Tokenized() {
   return (
-    <section className="h-[80vh] bg-white text-neutral-900 snap-start flex items-center py-12 md:py-16">
-      <div className="w-full px-[20px] sm:px-6 md:px-8">
+    <section className="h-[60vh] bg-white text-neutral-900 snap-start flex items-center justify-center justify-items-center content-center py-12 md:py-16">
+      <div className="mx-auto w-full max-w-[calc(100vw-40px)] sm:max-w-6xl">
         {/* Combined top/bottom dividers with internal padding to avoid margin-collapsing */}
-        <div className="mx-auto w-full max-w-6xl border-y border-neutral-400 px-0 sm:px-6 md:px-10">
+        <div className="w-full border-y border-neutral-400 px-5 sm:px-6 md:px-10">
           {/* Explicit spacer blocks to guarantee consistent spacing from dividers */}
           <div aria-hidden="true" className="h-[48px] sm:h-[56px]" />
           <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-12 text-left">
