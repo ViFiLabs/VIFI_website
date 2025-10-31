@@ -22,7 +22,7 @@ export default function ProductReserveX() {
                        md:w-[min(40vw,560px)]"
           >
             <Image
-              src="/reserveX.png"
+              src="/reservex.svg"
               alt="ReserveX"
               fill
               sizes="(min-width: 1280px) 560px, (min-width: 768px) 40vw, 80vw"
