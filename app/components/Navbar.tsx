@@ -78,24 +78,32 @@ export default function Navbar() {
       className="fixed inset-x-0 top-0 z-50"
     >
       <div className="w-full px-[clamp(48px,8vw,160px)]">
-        <div className="h-20 flex items-center justify-center">
-          {/* Center: Links */}
-          <div>
+        <div className="h-20 grid grid-cols-3 items-center">
+          <div className="hidden md:block" />
+          {/* <div className="flex justify-center">
             <ul className="hidden md:flex items-center gap-16 lg:gap-20 text-sm text-gray-300">
               <li><a href="/about" className="hover:text-white transition-colors">About</a></li>
               <li><a href="/blog" className="hover:text-white transition-colors">Blog</a></li>
             </ul>
-          </div>
+          </div> */}
+          <div />
         </div>
       </div>
     </motion.nav>
-    {/* Fixed Logo + Wordmark, always visible and independent of navbar visibility */}
+    {/* Fixed Logo + animated wordmark */}
     <div className="fixed top-0 z-[60] h-20 flex items-center left-[clamp(48px,8vw,160px)]">
-      <div className="flex items-center gap-3">
-        <a href="/" aria-label="VIFILABS home" className="flex items-center gap-2">
-        <img src="/vifilogo.svg" alt="VIFILABS logo mark" className="h-7 w-auto" />
-        <img src="/vifilabs-text.svg" alt="VIFILABS" className="h-4 w-auto" />
+      <div className="flex items-center gap-2">
+        <a href="/" aria-label="VIFILABS home">
+          <img src="/vifilogo.svg" alt="VIFILABS logo mark" className="h-7 w-auto" />
         </a>
+        <motion.img
+          src="/vifilabs-text.svg"
+          alt="VIFILABS wordmark"
+          className="hidden h-4 w-auto md:block"
+          initial={{ opacity: 1, x: 0 }}
+          animate={{ opacity: visible ? 1 : 0, x: visible ? 0 : -12 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+        />
       </div>
     </div>
     {/* Fixed CTA, always visible and independent of navbar visibility */}
