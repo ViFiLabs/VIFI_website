@@ -79,24 +79,30 @@ export default function Navbar() {
       </div>
     </motion.nav>
     {/* Fixed Logo + Wordmark, always visible and independent of navbar visibility */}
-    {/* <div className="fixed top-0 z-[60] h-20 flex items-center left-[clamp(48px,8vw,160px)]">
+    <div className="fixed top-0 z-[60] h-20 flex items-center left-[clamp(48px,8vw,160px)]">
       <div className="flex items-center gap-3">
         <a href="/" aria-label="VIFILABS home" className="flex items-center gap-2">
         <img src="/vifilogo.svg" alt="VIFILABS logo mark" className="h-7 w-auto" />
         <img src="/vifilabs-text.svg" alt="VIFILABS" className="h-4 w-auto" />
         </a>
       </div>
-    </div> */}
+    </div>
     {/* Fixed CTA, always visible and independent of navbar visibility */}
-    {/* <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
+    <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
       <a
         href="/products"
         aria-label="Explore products"
-        className="group inline-flex items-center gap-3 px-5 py-2 text-sm text-white/90 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/0 hover:bg-white/5"
+        className="group relative inline-flex items-center justify-center rounded-full border border-[#E24232] px-6 py-2 text-base bg-[#000000]/20 backdrop-blur-md 
+              font-light text-white/90 transition-colors duration-300 overflow-hidden"
+        style={{ paddingLeft: "12px", paddingRight: "12px", paddingTop: "8px", paddingBottom: "8px" }}
       >
-        <span>Explore products</span>
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 origin-left scale-x-0 rounded-full bg-[#28E89B] transition-transform duration-500 ease-out group-hover:scale-x-100"
+        />
+        <span className="relative z-10 transition-colors duration-300 group-hover:text-black">Explore products</span>
       </a>
-    </div> */}
+      </div>
     </>
   );
 }
