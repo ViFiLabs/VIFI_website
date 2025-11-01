@@ -93,9 +93,19 @@ export default function Navbar() {
     {/* Fixed Logo + animated wordmark */}
     <div className="fixed top-0 z-[60] h-20 flex items-center left-[clamp(48px,8vw,160px)]">
       <div className="flex items-center gap-2">
-        <a href="/" aria-label="VIFILABS home">
-          <img src="/vifilogo.svg" alt="VIFILABS logo mark" className="h-7 w-auto" />
-        </a>
+        <div className="relative flex items-center justify-center">
+          <a href="/" aria-label="VIFILABS home" className="z-10"
+          style={{ padding:5, borderRadius: '9999px' }}>
+            <img src="/vifilogo.svg" alt="VIFILABS logo mark" className="h-7 w-auto" />
+          </a>
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={!visible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            style={{ backgroundColor: 'rgba(0,0,0,0.20)', borderRadius: '9999px', backdropFilter: 'blur(8px)', padding: 10 }}
+          />
+        </div>
         <motion.img
           src="/vifilabs-text.svg"
           alt="VIFILABS wordmark"
