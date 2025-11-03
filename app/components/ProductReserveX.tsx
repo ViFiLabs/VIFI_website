@@ -1,12 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 export default function ProductReserveX() {
   return (
     <section className="h-full w-full bg-[#216e54] text-white pt-24 pb-12 md:py-20">
-    <div className="grid h-full w-full grid-cols-1 items-start gap-12 px-[20px] py-8 md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0">
+    <div className="grid h-full w-full grid-cols-1 items-start gap-12 px-[20px] py-8 md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0 ">
         {/* Left: Image */}
         <motion.div
           className="flex w-full items-start justify-center pt-[clamp(48px,12vh,120px)] -mb-[clamp(24px,6vh,64px)] md:items-center md:pt-0 md:mb-0"
@@ -16,18 +15,15 @@ export default function ProductReserveX() {
           viewport={{ amount: 0.4, once: false }}
         >
           <div
-            className="relative aspect-[4/3] 
-                       w-[min(90vw,420px)] 
-                       sm:w-[min(80vw,480px)] 
-                       md:w-[min(40vw,560px)]"
+            className="relative aspect-[4/3] w-[min(90vw,420px)] sm:w-[min(80vw,480px)] md:w-[min(40vw,560px)] overflow-hidden rounded-[24px] translate-y-[clamp(16px,6vh,40px)] md:translate-y-0"
           >
-            <Image
-              src="/reservex.svg"
-              alt="ReserveX"
-              fill
-              sizes="(min-width: 1280px) 560px, (min-width: 768px) 40vw, 80vw"
-              className="object-contain translate-y-[clamp(16px,6vh,40px)] md:translate-y-0"
-              priority
+            <video
+              src="/reservexvid.mp4"
+              className="absolute inset-0 h-full w-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
             />
           </div>
         </motion.div>

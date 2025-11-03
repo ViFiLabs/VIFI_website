@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 export default function ProductVIFIFX() {
   return (
@@ -16,18 +15,15 @@ export default function ProductVIFIFX() {
           viewport={{ amount: 0.4, once: false }}
         >
           <div
-            className="relative aspect-[4/3] 
-                       w-[min(90vw,420px)] 
-                       sm:w-[min(80vw,480px)] 
-                       md:w-[min(40vw,560px)]"
+            className="relative aspect-[4/3] w-[min(90vw,420px)] sm:w-[min(80vw,480px)] md:w-[min(40vw,560px)] overflow-hidden rounded-[24px] translate-y-[clamp(16px,6vh,40px)] md:translate-y-0"
           >
-            <Image
-              src="/vififx.svg"
-              alt="vifiFX"
-              fill
-              sizes="(min-width: 1280px) 560px, (min-width: 768px) 40vw, 80vw"
-              className="object-contain translate-y-[clamp(16px,6vh,40px)] md:translate-y-0"
-              priority
+            <video
+              src="/vivifxvid.mp4"
+              className="absolute inset-0 h-full w-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
             />
           </div>
         </motion.div>
