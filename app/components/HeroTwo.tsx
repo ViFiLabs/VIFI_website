@@ -17,9 +17,9 @@ export default function HeroTwo() {
     // Start when this section's top reaches the viewport center, finish when bottom crosses center
     offset: ['start center', 'end center']
   });
-  // Use this adjusted progress directly (0..1 in the desired window)
-  const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const borderProgress = useTransform(progress as MotionValue<number>, [0.35, 0.85], [0, 1], { clamp: true });
+  // Accelerate reveal by completing animations within the first 70% of the scroll window
+  const progress = useTransform(scrollYProgress, [0, 0.7], [0, 1], { clamp: true });
+  const borderProgress = useTransform(progress as MotionValue<number>, [0.25, 0.85], [0, 1], { clamp: true });
 
   // Per-word reveal component
   function Word({ text, index, total }: { text: string; index: number; total: number }) {
@@ -27,7 +27,7 @@ export default function HeroTwo() {
     const falloff = 0.08; // smoothness of transition per word
     const start = Math.max(0, t - falloff);
     const end = Math.min(1, t + falloff);
-    const color = useTransform(progress as MotionValue<number>, [start, t, end], ['#94a3b8', '#e5e7eb', '#ffffff']);
+  const color = useTransform(progress as MotionValue<number>, [start, t, end], ['#94a3b8', '#e5e7eb', '#ffffff']);
     return (
       <motion.span style={{ color }} className="inline-block">
         {text}
