@@ -105,7 +105,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className="relative min-h-[200vh]">
+      <div className="relative min-h-[100vh]">
         <div className="sticky top-0 h-screen bg-gradient-to-b from-[#191919] to-[#188257] z-20 shadow-xl">
           {/* Heading + rule positioned responsively */}
           <div
