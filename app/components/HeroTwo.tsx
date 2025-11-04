@@ -14,9 +14,8 @@ export default function HeroTwo() {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     container: containerRef,
-    // Start when this section's top hits the viewport center,
-    // finish when this section's center hits the viewport center
-    offset: ['start center', 'center center']
+    // Start when this section's top reaches the viewport center, finish when bottom crosses center
+    offset: ['start center', 'end center']
   });
   // Use this adjusted progress directly (0..1 in the desired window)
   const progress = useTransform(scrollYProgress, [0, 1], [0, 1]);
