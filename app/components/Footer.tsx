@@ -225,8 +225,10 @@ export default function Footer() {
       </div>
 
       {/* footer parallax */}
-      <footer className="sticky bottom-0 z-auto h-[20vh] w-full bg-black flex items-center justify-center text-white text-xl font-semibold">
-        footer
+      <footer className="sticky bottom-0 z-auto h-[40vh] w-full bg-[#2AE89B] flex items-center justify-center px-6">
+        <p className="text-center text-[36px] md:text-[54px] font-bold leading-tight text-black max-w-[900px]">
+          Now we’re building it—for everyone else who’s been left out of the system.
+        </p>
       </footer>
     </>
   );
