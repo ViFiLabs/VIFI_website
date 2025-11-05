@@ -17,6 +17,8 @@ export default function Footer() {
   const headingRef = useRef<HTMLDivElement | null>(null);
   const headingControls = useAnimation();
   const headingInView = useInView(headingRef, { amount: 0.75, margin: "-5% 0px -15% 0px" } as unknown as any);
+  const headingTextRef = useRef<HTMLHeadingElement | null>(null);
+  const [arrowLength, setArrowLength] = useState(0);
 
   const mobileHeadingRef = useRef<HTMLDivElement | null>(null);
   const mobileHeadingControls = useAnimation();
@@ -80,12 +82,13 @@ export default function Footer() {
   }, [controls, hiddenImageState, inView, visibleImageState]);
 
   useEffect(() => {
-    if (headingInView) {
-      headingControls.start({ scaleX: 1, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } });
-    } else {
-      headingControls.start({ scaleX: 0, opacity: 0, transition: { duration: 0.5, ease: "easeIn" } });
+    if (!isDesktop) {
+      headingControls.stop();
+      return;
     }
-  }, [headingControls, headingInView]);
+
+    headingControls.start(headingInView ? "visible" : "hidden");
+  }, [headingControls, headingInView, isDesktop]);
 
   useEffect(() => {
     if (copyInView) {
@@ -103,6 +106,34 @@ export default function Footer() {
     }
   }, [mobileHeadingControls, mobileHeadingInView]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (!isDesktop) {
+      setArrowLength(0);
+      return;
+    }
+
+    const spacingBetweenHeadingAndArrow = 24; // matches ml-6 offset
+    const minimumRightGap = 170;
+
+    const updateArrowLength = () => {
+      if (!headingTextRef.current) {
+        return;
+      }
+
+      const rect = headingTextRef.current.getBoundingClientRect();
+      const available = window.innerWidth - minimumRightGap - (rect.right + spacingBetweenHeadingAndArrow);
+      setArrowLength(Math.max(0, available));
+    };
+
+    updateArrowLength();
+    window.addEventListener("resize", updateArrowLength);
+    return () => window.removeEventListener("resize", updateArrowLength);
+  }, [isDesktop, headingInView]);
+
   return (
     <>
       <div className="relative min-h-[100vh]">
@@ -110,31 +141,43 @@ export default function Footer() {
           {/* Heading + rule positioned responsively */}
           <div
             ref={headingRef}
-            className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-[clamp(64px,12vh,128px)] items-center gap-6"
+            className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-[clamp(64px,12vh,128px)]"
           >
-            <motion.div
-              className="relative h-[2px] w-[clamp(6rem,20vw,24rem)] origin-right bg-emerald-400/60"
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={headingControls}
-            >
-              <span
-                aria-hidden="true"
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 h-0 w-0 border-l-[12px] border-l-emerald-400/60 border-y-[7px] border-y-transparent"
-              />
-            </motion.div>
-              <h1 className="whitespace-nowrap text-4xl md:text-6xl lg:text-6xl font-light text-white">Our Team</h1>
-            <motion.div
-              className="relative h-[2px] w-[clamp(6rem,20vw,24rem)] origin-left bg-emerald-400/60"
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={headingControls}
-            >
-              <span
-                aria-hidden="true"
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 h-0 w-0 border-r-[12px] border-r-emerald-400/60 border-y-[7px] border-y-transparent"
-              />
-            </motion.div>
+            <div className="relative flex items-center">
+              <h1
+                ref={headingTextRef}
+                className="whitespace-nowrap text-4xl md:text-6xl lg:text-6xl font-light text-white"
+              >
+                Our Team
+              </h1>
+              <motion.div
+                className="pointer-events-none absolute left-full ml-6 flex items-center top-1/2 -translate-y-1/2"
+                initial="hidden"
+                animate={headingControls}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { duration: 0.25, ease: "easeOut" } },
+                }}
+              >
+                <motion.span
+                  aria-hidden="true"
+                  className="mr-2 inline-block h-0 w-0 border-y-[7px] border-y-transparent border-r-[16px] border-r-emerald-400/70"
+                  variants={{
+                    hidden: { opacity: 0, x: 36 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut", delay: 0.2 } },
+                  }}
+                />
+                <motion.span
+                  className="relative block h-[1.5px] origin-right bg-emerald-400/60"
+                  style={{ width: arrowLength }}
+                  variants={{
+                    hidden: { scaleX: 0 },
+                    visible: { scaleX: 1, transition: { duration: 0.9, ease: "easeOut" } },
+                  }}
+                />
+              </motion.div>
+            </div>
           </div>
-
          {/* Outer layout container */}
             <div className="relative h-full w-full flex items-center justify-center md:justify-start">
               <div className="w-full max-w-[1400px] flex flex-col items-center gap-10 px-6 sm:px-10 md:flex-row md:items-center md:justify-between md:gap-0 md:px-0 lg:px-0 xl:px-0">
