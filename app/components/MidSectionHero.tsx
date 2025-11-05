@@ -19,9 +19,9 @@ export default function MidSectionHero() {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     container: containerRef,
-    // Begin when section top hits 75% of viewport height and
-    // complete when section bottom hits the same 75% line (longer window so it's visible)
-    offset: ['start 75%', 'end 75%']
+    // Begin when section top hits ~60% of viewport height so animation starts higher
+    // and complete when section bottom hits the same line to keep the longer window
+    offset: ['start 60%', 'end 60%']
   });
 
   useEffect(() => {
