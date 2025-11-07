@@ -60,12 +60,12 @@ export default function MidSectionHero() {
 
   return (
   <section ref={sectionRef} className="h-[40vh] sm:h-[60vh] bg-black-400 snap-start flex items-center">
-      <div className="w-full px-6 sm:px-8 md:px-12">
-        <h1 className="text-white font-bold tracking-tight leading-[0.9] text-left text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[10vw]">
+      <div className="w-full px-6 sm:px-8 md:px-12 flex justify-center">
+        <h1 className="text-white font-bold tracking-tight leading-[0.9] text-left text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-[8vw] max-w-[min(90vw,1100px)]">
           <span className="block">A Protocol for</span>
 
           {(shouldAnimate ?? false) ? (
-            <span className="block">
+            <span className="block lg:whitespace-nowrap">
               <span className="inline-block">the&nbsp;</span>
 
               {/* Unseen with strike-through and fade out */}
@@ -93,7 +93,7 @@ export default function MidSectionHero() {
               </motion.span>
             </span>
           ) : (
-            <span className="block">
+            <span className="block lg:whitespace-nowrap">
               <span className="inline-block">the&nbsp;</span>
               <span className="inline-block line-through decoration-white decoration-2 md:decoration-4">
                 Unseen
