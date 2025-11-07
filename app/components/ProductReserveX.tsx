@@ -1,18 +1,35 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function ProductReserveX() {
+  const [enableAnimation, setEnableAnimation] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const updateMatch = () => setEnableAnimation(mediaQuery.matches);
+
+    updateMatch();
+    mediaQuery.addEventListener("change", updateMatch);
+    return () => mediaQuery.removeEventListener("change", updateMatch);
+  }, []);
+
   return (
     <section className="h-full w-full bg-[#216e54] text-white pt-24 pb-12 md:py-20">
     <div className="grid h-full w-full grid-cols-1 items-start gap-12 px-[20px] py-8 md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0 ">
         {/* Left: Image */}
         <motion.div
           className="flex w-full items-start justify-center pt-[clamp(48px,12vh,120px)] -mb-[clamp(24px,6vh,64px)] md:items-center md:pt-0 md:mb-0"
-          initial={{ x: -140, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ amount: 0.4, once: false }}
+          initial={enableAnimation ? { x: -140, opacity: 0 } : { x: 0, opacity: 1 }}
+          whileInView={enableAnimation ? { x: 0, opacity: 1 } : undefined}
+          animate={enableAnimation ? undefined : { x: 0, opacity: 1 }}
+          transition={enableAnimation ? { duration: 0.8, ease: "easeOut" } : undefined}
+          viewport={enableAnimation ? { amount: 0.4, once: false } : undefined}
         >
           <div
             className="relative aspect-[4/3] w-[min(90vw,420px)] sm:w-[min(80vw,480px)] md:w-[min(40vw,560px)] overflow-hidden rounded-[24px] translate-y-[clamp(16px,6vh,40px)] md:translate-y-0"
@@ -31,10 +48,11 @@ export default function ProductReserveX() {
         {/* Right: Copy */}
         <motion.div
           className="flex w-full items-start justify-center px-[20px] -translate-y-[clamp(16px,6vh,48px)] md:translate-y-0 md:items-center md:px-0"
-          initial={{ x: 140, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
-          viewport={{ amount: 0.4, once: false }}
+          initial={enableAnimation ? { x: 140, opacity: 0 } : { x: 0, opacity: 1 }}
+          whileInView={enableAnimation ? { x: 0, opacity: 1 } : undefined}
+          animate={enableAnimation ? undefined : { x: 0, opacity: 1 }}
+          transition={enableAnimation ? { duration: 0.8, ease: "easeOut", delay: 0.1 } : undefined}
+          viewport={enableAnimation ? { amount: 0.4, once: false } : undefined}
         >
           <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[calc(100vw-40px)] md:max-w-[560px] text-left">
             <h2
