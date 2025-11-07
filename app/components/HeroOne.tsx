@@ -72,17 +72,40 @@ export default function HeroOne() {
         </motion.h2>
       </div>
 
-  {/* Backers strip (in normal flow, not absolute) */}
-  <div className="relative z-20 flex justify-center bottom-4 md:bottom-8">
-        <div className="w-[min(92vw,1100px)] max-w-[640px] md:max-w-none">
-          <Image
-            src="/backed.svg"
-            alt="Backed by our partners"
-            width={1100}
-            height={120}
-            className="w-full h-auto opacity-90"
-            priority
-          />
+      {/* Backers strip (in normal flow, not absolute) */}
+      <div className="relative z-20 flex justify-center bottom-4 md:bottom-8">
+        <div className="w-[min(90vw,1000px)]">
+          <div className="flex h-[80px] flex-col items-center justify-center gap-3 rounded-2xl border border-white/5 bg-white/10 px-6 py-3 text-white backdrop-blur-[11px] md:h-[100px] md:flex-row md:justify-around md:gap-10 md:px-10 md:py-0">
+            <p className="w-full text-center text-xs font-medium uppercase tracking-[0.32em] text-white/70 md:w-auto md:text-sm">
+              Backed by
+            </p>
+            <div className="flex w-full items-center justify-center gap-4 md:w-auto md:justify-around md:gap-10">
+              <Image
+                src="/coinbase.svg"
+                alt="Coinbase"
+                width={112}
+                height={40}
+                className="h-6 w-auto opacity-90 md:h-10"
+                priority
+              />
+              <Image
+                src="/scroll.svg"
+                alt="Scroll"
+                width={112}
+                height={40}
+                className="h-6 w-auto opacity-90 md:h-10"
+                priority
+              />
+              <Image
+                src="/bankless.svg"
+                alt="Bankless"
+                width={112}
+                height={40}
+                className="h-6 w-auto opacity-90 md:h-10"
+                priority
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
