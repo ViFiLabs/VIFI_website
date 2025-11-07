@@ -4,6 +4,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function HeroOne() {
+  const logos = [
+    { src: "/coinbase.svg", alt: "Coinbase" },
+    { src: "/scroll.svg", alt: "Scroll" },
+    { src: "/bankless.svg", alt: "Bankless" },
+  ];
+
   return (
     <section
       className="relative min-h-screen snap-start bg-cover bg-center bg-no-repeat flex flex-col justify-between"
@@ -80,30 +86,24 @@ export default function HeroOne() {
               Backed by
             </p>
             <div className="flex w-full items-center justify-center gap-4 md:w-auto md:justify-around md:gap-10">
-              <Image
-                src="/coinbase.svg"
-                alt="Coinbase"
-                width={112}
-                height={40}
-                className="h-6 w-auto opacity-90 md:h-10"
-                priority
-              />
-              <Image
-                src="/scroll.svg"
-                alt="Scroll"
-                width={112}
-                height={40}
-                className="h-6 w-auto opacity-90 md:h-10"
-                priority
-              />
-              <Image
-                src="/bankless.svg"
-                alt="Bankless"
-                width={112}
-                height={40}
-                className="h-6 w-auto opacity-90 md:h-10"
-                priority
-              />
+              {logos.map((logo, index) => (
+                <motion.div
+                  key={logo.alt}
+                  className="flex items-center justify-center"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + index * 0.2, duration: 0.5, ease: "easeOut" }}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={112}
+                    height={40}
+                    className="h-6 w-auto opacity-90 md:h-10"
+                    priority
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
