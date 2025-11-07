@@ -27,7 +27,7 @@ export default function HeroTwo() {
     const falloff = 0.08; // smoothness of transition per word
     const start = Math.max(0, t - falloff);
     const end = Math.min(1, t + falloff);
-  const color = useTransform(progress as MotionValue<number>, [start, t, end], ['#94a3b8', '#e5e7eb', '#ffffff']);
+  const color = useTransform(progress as MotionValue<number>, [start, t, end], ['#6A6A6A', '#e5e7eb', '#ffffff']);
     return (
       <motion.span style={{ color }} className="inline-block">
         {text}
