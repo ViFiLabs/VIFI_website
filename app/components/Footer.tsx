@@ -116,7 +116,7 @@ export default function Footer() {
       return;
     }
 
-    const spacingBetweenHeadingAndArrow = 24; // matches ml-6 offset
+  const spacingBetweenHeadingAndArrow = 32; // matches ml-8 offset
     const minimumRightGap = 170;
 
     const updateArrowLength = () => {
@@ -151,7 +151,7 @@ export default function Footer() {
                 Our Team
               </h1>
               <motion.div
-                className="pointer-events-none absolute left-full ml-6 flex items-center top-1/2 -translate-y-1/2"
+                className="pointer-events-none absolute left-full ml-8 flex items-center top-1/2 -translate-y-1/2"
                 initial="hidden"
                 animate={headingControls}
                 variants={{
@@ -160,21 +160,18 @@ export default function Footer() {
                 }}
               >
                 <motion.span
-                  aria-hidden="true"
-                  className="mr-2 inline-block h-0 w-0 border-y-[7px] border-y-transparent border-r-[16px] border-r-emerald-400/70"
-                  variants={{
-                    hidden: { opacity: 0, x: 36 },
-                    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut", delay: 0.2 } },
-                  }}
-                />
-                <motion.span
-                  className="relative block h-[1.5px] origin-right bg-emerald-400/60"
-                  style={{ width: arrowLength }}
+                  className="relative h-[2px] flex-1 origin-right bg-emerald-400/60"
+                  style={{ width: Math.max(0, arrowLength) }}
                   variants={{
                     hidden: { scaleX: 0 },
                     visible: { scaleX: 1, transition: { duration: 0.9, ease: "easeOut" } },
                   }}
-                />
+                >
+                  <span
+                    className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[7px] border-y-transparent border-r-[14px] border-r-emerald-400/60"
+                aria-hidden="true"
+              />
+                </motion.span>
               </motion.div>
             </div>
           </div>
@@ -268,7 +265,7 @@ export default function Footer() {
       </div>
 
       {/* footer parallax */}
-      <footer className="sticky bottom-0 z-auto h-[40vh] w-full bg-[#2AE89B] flex items-center justify-center px-6">
+      <footer className="sticky bottom-0 z-auto h-[20vh] w-full bg-[#2AE89B] flex items-center justify-center px-6">
         <p className="text-center text-[36px] md:text-[54px] font-bold leading-tight text-black max-w-[900px]">
           Now we’re building it—for everyone else who’s been left out of the system.
         </p>
