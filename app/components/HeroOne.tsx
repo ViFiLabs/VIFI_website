@@ -14,7 +14,7 @@ export default function HeroOne() {
         
         {/* Animated culture-to-capital line */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-          <div className="flex items-center w-full max-w-[1200px] gap-4 md:gap-8 px-6">
+          <div className="flex items-center w-full max-w-[calc(100vw-40px)] md:max-w-[1200px] gap-4 md:gap-8 px-6">
             <span className="text-xs md:text-sm font-medium uppercase tracking-[0.32em] text-emerald-300/80">
               Where<br className="md:hidden" /> Culture
             </span>
@@ -36,7 +36,7 @@ export default function HeroOne() {
         </div>
 
         {/* Hero image + text */}
-        <div className="relative z-10 w-[min(88vw,420px)] aspect-[3/4] transition-all duration-500 md:w-[min(78vw,980px)] md:aspect-[16/9]">
+        <div className="relative z-10 h-[260px] w-[220px] transition-all duration-500 md:w-[min(78vw,980px)] md:aspect-[16/9] md:h-auto">
           <Image
             src="/heroimg.png"
             alt="ViFi hero graphic"
