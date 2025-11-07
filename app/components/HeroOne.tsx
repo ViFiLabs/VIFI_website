@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function HeroOne() {
   const logos = [
-    { src: "/coinbase.svg", alt: "Coinbase" },
+    { src: "/Coinbase.svg", alt: "Coinbase" },
     { src: "/scroll.svg", alt: "Scroll" },
     { src: "/bankless.svg", alt: "Bankless" },
   ];
