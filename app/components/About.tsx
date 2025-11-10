@@ -23,7 +23,7 @@ export default function About() {
   // Corner radius: curved -> straight -> curved
   const borderRadius = useTransform(scrollYProgress, [0, 0.5, 1], [24, 0, 0]);
   // Content scale (more pronounced) to make text and image grow with the card (disabled on mobile)
-  const rawContentScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1.1, 1]);
+  const rawContentScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1, 1]);
   const contentScale = useSpring(
     useTransform(rawContentScale, (value) => (isLargeScreen ? value : 1)),
     { stiffness: 140, damping: 20, mass: 0.3 }
