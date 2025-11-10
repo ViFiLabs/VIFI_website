@@ -168,7 +168,7 @@ export default function Footer() {
                   }}
                 >
                   <span
-                    className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[7px] border-y-transparent border-r-[14px] border-r-emerald-400/60"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 translate-x-[-2px] h-0 w-0 border-y-[7px] border-y-transparent border-r-[14px] border-r-emerald-600/100"
                 aria-hidden="true"
               />
                 </motion.span>
@@ -265,7 +265,7 @@ export default function Footer() {
       </div>
 
       {/* footer parallax */}
-      <footer className="sticky bottom-0 z-auto h-[10vh] w-full bg-[#2AE89B] flex items-center justify-center px-6">
+      <footer className="sticky bottom-0 z-auto h-[1vh] w-full bg-[#2AE89B] flex items-center justify-center px-6">
         {/* <p className="text-center text-[36px] md:text-[54px] font-bold leading-tight text-black max-w-[900px]">
           Now we’re building it—for everyone else who’s been left out of the system.
         </p> */}
