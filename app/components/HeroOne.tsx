@@ -21,21 +21,21 @@ export default function HeroOne() {
         {/* Animated culture-to-capital line */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
           <div className="flex items-center w-full max-w-[calc(100vw-40px)] md:max-w-[1200px] gap-4 md:gap-8 px-6">
-            <span className="text-xs md:text-sm font-medium uppercase tracking-[0.32em] text-emerald-300/80">
+            <span className="text-xs md:text-sm font-medium uppercase tracking-[0.05em] text-emerald-300/80">
               Where<br className="md:hidden" /> Culture
             </span>
             <motion.span
-              className="relative flex-1 h-px md:h-[2px] bg-emerald-300/40 origin-left"
+              className="relative flex-1 h-[2px] md:h-[3px] bg-emerald-300/40 origin-left"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 1.1, duration: 1.6, ease: "easeInOut" }}
             >
               <span
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 h-0 w-0 border-l-[10px] border-l-emerald-300/60 border-y-[6px] border-y-transparent"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 h-0 w-0 border-l-[10px] border-l-emerald-300/60 border-y-[7px] border-y-transparent"
                 aria-hidden="true"
               />
             </motion.span>
-            <span className="text-xs md:text-sm font-medium uppercase tracking-[0.32em] text-emerald-300/80 text-right">
+            <span className="text-xs md:text-sm font-medium uppercase tracking-[0.05em] text-emerald-300/80 text-right">
               Meets<br className="md:hidden" /> Capital
             </span>
           </div>
