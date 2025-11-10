@@ -58,19 +58,23 @@ export default function ProductVIFIFX() {
             <h2
               className="mb-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]"
             >
-              vifiFX
+              ViFi FX
             </h2>
             <p
               className="mb-4 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
-              Nulla facilisi. Quisque tincidunt dapibus ligula id aliquet. Mauris vulputate nibh sed dolor finibus,
-              sed mattis quam vehicula. Donec mollis eros mollis mauris feugiat, id aliquet augue placerat. Sed ut rutrum odio.
+             ViFi FX is the world’s first capital-efficient decentralized exchange for emerging market stablecoins.
             </p>
             <p
+              className="mb-4 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
+            >
+          It enables real-time, on-chain foreign exchange with near-zero slippage. By replacing cash swaps and OTC desks with programmable liquidity pools, ViFi FX delivers institutional-grade FX infrastructure for merchants, wallets, fintechs, and banks.
+          </p>
+          <p
               className="mb-8 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
-              Fusce vitae metus sodales, elementum tortor non, ornare urna. Nulla facilisi. Mauris eget nisl neque.
-              Aliquam sapien ipsum, mattis eu neque in, tristique vestibulum diam. Suspendisse finibus, lorem.
+              The protocol allows seamless swaps between USD and local stablecoins, reducing dependence on intermediaries and improving price efficiency. Designed for the $540 billion crypto economy in Africa and LATAM, its novel AMM architecture unlocks deep, transparent liquidity for long-tail currencies.
+              For the first time, providing liquidity for on-chain FX and local stablecoins is not only possible but profitable.
             </p>
           </div>
         </motion.div>

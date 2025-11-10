@@ -67,14 +67,17 @@ export default function ProductOneramp() {
             <p
               className="mb-4 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
-              Nulla facilisi. Quisque tincidunt dapibus ligula id aliquet. Mauris vulputate nibh sed dolor finibus,
-              sed mattis quam vehicula. Donec mollis eros mollis mauris feugiat, id aliquet augue placerat.
+              OneRamp provides next-generation crypto-to-fiat infrastructure across Africa, connecting decentralized liquidity to real-world payment networks. 
+            </p>
+            <p
+              className="mb-4 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
+            >
+              Powered by ViFi’s proprietary FX protocol, OneRamp delivers competitive rates and near-instant crypto-to-mobile-money conversions. It allows diaspora users to send value home seamlessly while giving local businesses and wallets direct access to stablecoin liquidity.
             </p>
             <p
               className="mb-8 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
-              Fusce vitae metus sodales, elementum tortor non, ornare urna. Mauris eget nisl neque. Aliquam sapien ipsum,
-              mattis eu neque in, tristique vestibulum diam. Suspendisse finibus, lorem.
+             Today, OneRamp serves seven African markets. Tomorrow, it becomes the bridge linking 200 million senders to 800 million recipients across the continent. ViFi Labs is building the rails to onboard one billion people into the future of finance.
             </p>
           </div>
         </motion.div>
