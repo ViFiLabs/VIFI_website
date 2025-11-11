@@ -57,7 +57,7 @@ export default function HeroTwo() {
     >
        {/* explainer */}
       <div className="mx-auto w-full max-w-[calc(100vw-40px)] text-center py-10 md:max-w-5xl md:py-12">
-        <h2 className="text-2xl md:text-4xl lg:text-4xl xl:text-5xl font-medium leading-relaxed md:leading-relaxed lg:leading-[1.2]">
+        <h2 className="text-2xl md:text-4xl lg:text-4xl xl:text-5xl font-extralight leading-relaxed md:leading-relaxed lg:leading-[1.2]">
           <TextReveal text="ViFi Labs is a technology studio that brings emerging market economies. We are bringing emerging market payment and capital networks onchain through our innovative product offerings." />
         </h2>
       </div>
@@ -65,7 +65,7 @@ export default function HeroTwo() {
       {/* Our Products summary */}
       <div className="mx-auto w-full max-w-[calc(100vw-40px)] md:max-w-6xl relative">
         <div className="md:hidden w-full text-left mb-6">
-          <p className="text-[30px] leading-[38px] font-medium text-white/80 mb-3">Our Products</p>
+          <p className="text-[30px] leading-[38px] font-thin text-white/80 mb-3">Our Products</p>
           <motion.div
             className="h-px bg-[#216e54]/80 origin-left"
             style={{ scaleX: borderProgress }}
@@ -78,7 +78,7 @@ export default function HeroTwo() {
         />
         <div aria-hidden="true" className="hidden h-[60px] md:block" />
         <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-3 md:gap-8">
-          <p className="hidden text-sm font-medium text-white/80 md:block md:text-base">Our Products</p>
+          <p className="hidden text-sm font-thin text-white/80 md:block md:text-base">Our Products</p>
           <p className="md:col-span-2 text-[18px] leading-[26px] text-white/70 md:text-lg md:leading-relaxed">
             ViFi Labs is building financial infrastructure for emerging markets, starting with FX swaps, tokenized reserves, and seamless remittances. We’re creating a borderless system designed to serve the billions who remain financially excluded.
           </p>

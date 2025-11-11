@@ -59,21 +59,21 @@ export default function ProductReserveX() {
         >
           <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[calc(100vw-40px)] md:max-w-[560px] text-left">
             <h2
-              className="mb-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]"
+              className="mb-6 text-4xl font-thin sm:text-5xl md:text-6xl tracking-tight leading-[1.1]"
             >
               ReserveX
             </h2>
             <p
-              className="mb-4 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
+              className="mb-4 text-sm font-normal sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
             ReserveX is ViFi Labs’ RWA infrastructure protocol enabling the tokenization of emerging market bonds and securities.
             </p>
             <p
-              className="mb-4 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
+              className="mb-4 text-sm font-normal sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
             Global tokenization remains concentrated in U.S. fixed income, leaving local-currency debt in Africa and LATAM largely untapped. ReserveX changes this by introducing transparent, programmable infrastructure for issuance and settlement.            </p>
             <p
-              className="mb-8 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
+              className="mb-8 text-sm font-normal sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
             Built for asset managers, banks, and fintechs, it connects emerging economies to global liquidity, creating efficient issuance, settlement, and yield discovery in the next frontier of tokenized finance.
             </p>

@@ -45,7 +45,7 @@ export default function About() {
               <p className="text-[clamp(1.5rem,3.6vw,2.5rem)] font-semibold leading-snug tracking-tight text-neutral-900">
               We’re building ViFi because traditional financial infrastructure wasn’t made for us—or for the 3 billion people navigating informal and mobile-first economies.
               </p>
-              <p className="text-[clamp(0.95rem,3.2vw,1.125rem)] leading-relaxed text-neutral-600">
+              <p className="text-[clamp(0.95rem,3.2vw,1.125rem)] font-normal leading-relaxed text-neutral-600">
               Emerging markets aren’t just underserved—they’re the future of global growth. There are more mobile wallets than bank accounts. More freelancers than formal employees. A remittance corridor moving over $700B annually—mostly via legacy rails.
               </p>
             </div>

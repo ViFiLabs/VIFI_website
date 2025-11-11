@@ -59,22 +59,22 @@ export default function ProductVIFIFX() {
         >
           <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[calc(100vw-40px)] md:max-w-[560px] text-left">
             <h2
-              className="mb-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]"
+              className="mb-6 text-4xl sm:text-5xl md:text-6xl font-thin tracking-tight leading-[1.1]"
             >
               ViFi FX
             </h2>
             <p
-              className="mb-4 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
+              className="mb-4 text-sm font-normal sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
              ViFi FX is the world’s first capital-efficient decentralized exchange for emerging market stablecoins.
             </p>
             <p
-              className="mb-4 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
+              className="mb-4 text-sm font-normal sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
           It enables real-time, on-chain foreign exchange with near-zero slippage. By replacing cash swaps and OTC desks with programmable liquidity pools, ViFi FX delivers institutional-grade FX infrastructure for merchants, wallets, fintechs, and banks.
           </p>
           <p
-              className="mb-8 text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
+              className="mb-8 text-sm font-normal sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
               The protocol allows seamless swaps between USD and local stablecoins, reducing dependence on intermediaries and improving price efficiency. Designed for the $540 billion crypto economy in Africa and LATAM, its novel AMM architecture unlocks deep, transparent liquidity for long-tail currencies.
               For the first time, providing liquidity for on-chain FX and local stablecoins is not only possible but profitable.

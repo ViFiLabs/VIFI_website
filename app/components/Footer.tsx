@@ -148,7 +148,7 @@ export default function Footer() {
             <div className="relative flex items-center">
               <h1
                 ref={headingTextRef}
-                className="whitespace-nowrap text-4xl md:text-6xl lg:text-6xl font-light text-white"
+                className="whitespace-nowrap text-4xl md:text-6xl lg:text-6xl font-extralight tracking-wider text-white"
               >
                 Our Team
               </h1>
@@ -216,7 +216,7 @@ export default function Footer() {
                     initial="hidden"
                     animate={mobileHeadingControls}
                   >
-                    <h2 className="text-[30px] leading-[1.2] font-light">Our Team</h2>
+                    <p className="text-[30px] leading-[1.2] font-thin">Our Team</p>
                     <motion.div
                       className="relative h-[2px] flex-1 origin-right bg-emerald-400/60"
                       variants={{
@@ -238,7 +238,7 @@ export default function Footer() {
                   </motion.div>
                 </div>
                 <motion.p
-                  className="text-[15px] sm:text-[18px] lg:text-xl leading-relaxed text-neutral-200 mb-5 md:mb-12"
+                  className="text-[15px] sm:text-[18px] lg:text-xl font-medium leading-relaxed text-neutral-200 mb-5 md:mb-12"
                   variants={{
                     hidden: { opacity: 0, x: 60 },
                     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut", delay: 0.3 } },
@@ -251,7 +251,7 @@ export default function Footer() {
                 </motion.p>
 
                 <motion.p
-                  className="text-[16px] sm:text-[30px] lg:text-[42px] leading-tight text-white"
+                  className="text-[16px] sm:text-[30px] font-thin lg:text-[42px] leading-tight text-white"
                   variants={{
                     hidden: { opacity: 0, x: 80 },
                     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut", delay: 0.65 } },
@@ -268,7 +268,7 @@ export default function Footer() {
       </div>
 
       {/* footer parallax */}
-      <footer className="sticky bottom-0 z-auto h-[20vh] w-full bg-[#2AE89B] flex items-center justify-center px-6">
+      <footer className="sticky bottom-0 z-auto h-[7vh] w-full bg-[#2AE89B] flex items-center justify-center px-6">
         {/* <p className="text-center text-[36px] md:text-[54px] font-bold leading-tight text-black max-w-[900px]">
           Now we’re building it—for everyone else who’s been left out of the system.
         </p> */}

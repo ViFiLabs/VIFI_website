@@ -237,7 +237,7 @@ export default function Navbar() {
           aria-hidden="true"
           className="absolute inset-0 origin-left scale-x-0 rounded-full bg-[#28E89B] transition-transform duration-500 ease-out group-hover:scale-x-100"
         />
-        <span className="relative z-10 transition-colors duration-300 group-hover:text-black">Explore products</span>
+        <span className="relative z-10 transition-colors font-medium duration-300 group-hover:text-black">Explore products</span>
       </a>
       </div>
     </>

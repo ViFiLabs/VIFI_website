@@ -22,7 +22,7 @@ export default function Tokenized() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={isLargeScreen ? { once: true, amount: 0.4 } : undefined}
             >
-              <h2 className="mb-6 text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1]">Tokenized Futures</h2>
+              <h2 className="mb-6 text-3xl sm:text-5xl md:text-6xl font-thin tracking-tight leading-[1.1]">Tokenized Futures</h2>
             </motion.div>
 
             {/* Middle: Bold paragraph (20px) */}
@@ -46,7 +46,7 @@ export default function Tokenized() {
               transition={{ duration: 0.6, ease: "easeOut", delay: isLargeScreen ? 0.3 : 0 }}
               viewport={isLargeScreen ? { once: true, amount: 0.4 } : undefined}
             >
-              <p className="mb-8 text-[15px] sm:text-base md:text-lg leading-7 md:leading-8 text-neutral-700">
+              <p className="mb-8 text-[15px] font-normal sm:text-base md:text-lg leading-7 md:leading-8 text-neutral-700">
                 African and LATAM fund managers cannot afford to watch from the sidelines — they must embrace tokenized real-world assets and blockchain rails now, or risk being permanently left behind in the next wave of financial innovation.
               </p>
             </motion.div>
