@@ -1,11 +1,54 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const ppObjectSans = localFont({
+  src: [
+    {
+      path: "../public/fonts/PP Object Sans/PPObjectSans-Thin.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PP Object Sans/PPObjectSans-ThinSlanted.woff2",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/PP Object Sans/PPObjectSans-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PP Object Sans/PPObjectSans-Slanted.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/PP Object Sans/PPObjectSans-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PP Object Sans/PPObjectSans-BoldSlanted.woff2",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/PP Object Sans/PPObjectSans-Heavy.woff2",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PP Object Sans/PPObjectSans-HeavySlanted.woff2",
+      weight: "800",
+      style: "italic",
+    },
+  ],
+  variable: "--font-pp-object-sans",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -27,7 +70,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${ppObjectSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
         {children}
