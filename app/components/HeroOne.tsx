@@ -21,7 +21,7 @@ export default function HeroOne() {
         {/* Animated culture-to-capital line */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
           <div className="flex items-center w-full max-w-[calc(100vw-40px)] md:max-w-[1200px] gap-4 md:gap-8 px-6">
-            <span className="text-xs md:text-sm font-medium capitalize tracking-[0.05em] text-emerald-300/80">
+            <span className="text-xs md:text-sm font-medium capitalize tracking-[0.05em] text-[#2AE89B]">
               Where<br className="md:hidden" /> Culture
             </span>
             <motion.span
@@ -35,7 +35,7 @@ export default function HeroOne() {
                 aria-hidden="true"
               />
             </motion.span>
-            <span className="text-xs md:text-sm font-medium capitalize tracking-[0.05em] text-emerald-300/80 text-right">
+            <span className="text-xs md:text-sm font-medium capitalize tracking-[0.05em] text-[#2AE89B] text-right">
               Meets<br className="md:hidden" /> Capital
             </span>
           </div>
@@ -64,7 +64,7 @@ export default function HeroOne() {
               <br className="hidden md:block" />
               market economies
               <br className="hidden md:block" />
-              <span className="text-emerald-300">onchain</span>
+              <span className="text-[#2AE89B]">onchain</span>
             </motion.h2>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function HeroOne() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
           Bringing emerging market economies {" "}
-          <span className="text-emerald-300">onchain</span>
+          <span className="text-[#2AE89B]">onchain</span>
         </motion.h2>
       </div>
 
