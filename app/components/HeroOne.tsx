@@ -53,15 +53,18 @@ export default function HeroOne() {
           />
 
           {/* Desktop H2 */}
-          <div className="absolute inset-0 hidden items-center justify-center pointer-events-none md:flex">
+          <div className="absolute bottom-0 left-0 hidden pointer-events-none md:flex md:w-full md:justify-start">
             <motion.h2
-              className="text-center text-white font-light leading-tight text-[clamp(36px,6vw,72px)] max-w-[18ch]"
+              className="text-left text-white font-thin leading-tight text-[clamp(36px,6vw,72px)] max-w-[20ch] md:px-4 md:pb-6 tracking-tight"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              Bringing emerging market economies {" "}
-              <span className="text-emerald-300"> onchain</span>
+              Bringing emerging 
+              <br className="hidden md:block" />
+              market economies
+              <br className="hidden md:block" />
+              <span className="text-emerald-300">onchain</span>
             </motion.h2>
           </div>
         </div>
