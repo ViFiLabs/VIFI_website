@@ -5,9 +5,111 @@ import { motion } from 'framer-motion';
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true);
+  const [overLightBackground, setOverLightBackground] = useState(false);
+  const [ctaOverLightBackground, setCtaOverLightBackground] = useState(false);
   const lastYRef = useRef(0);
   const cleanupRef = useRef<() => void>(() => {});
   const intervalRef = useRef<number | null>(null);
+  const navRef = useRef<HTMLDivElement | null>(null);
+  const ctaRef = useRef<HTMLDivElement | null>(null);
+
+  const parseColor = (color: string) => {
+    const rgbaMatch = color.match(/rgba?\(([^)]+)\)/);
+    if (!rgbaMatch) {
+      return null;
+    }
+    const parts = rgbaMatch[1].split(',').map((part) => part.trim());
+    const r = Number(parts[0]);
+    const g = Number(parts[1]);
+    const b = Number(parts[2]);
+    const a = parts[3] !== undefined ? Number(parts[3]) : 1;
+    if ([r, g, b, a].some((value) => Number.isNaN(value))) {
+      return null;
+    }
+    return { r, g, b, a };
+  };
+
+  const isTransparent = (color: string) => {
+    const parsed = parseColor(color);
+    if (!parsed) {
+      return true;
+    }
+    return parsed.a === 0;
+  };
+
+  const isColorLight = (color: string) => {
+    const parsed = parseColor(color);
+    if (!parsed) {
+      return false;
+    }
+    const { r, g, b } = parsed;
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness >= 210; // treat light backgrounds as values near white
+  };
+
+  const resolveBackgroundColor = (node: HTMLElement | null): string | null => {
+    let current: HTMLElement | null = node;
+    while (current && current !== document.body) {
+      const styles = window.getComputedStyle(current);
+      if (styles.backgroundImage && styles.backgroundImage !== 'none') {
+        // Assume gradients/imagery are intentional backgrounds; sample via background color fallback if available
+        if (styles.backgroundColor && !isTransparent(styles.backgroundColor)) {
+          return styles.backgroundColor;
+        }
+        return null;
+      }
+      if (styles.backgroundColor && !isTransparent(styles.backgroundColor)) {
+        return styles.backgroundColor;
+      }
+      current = current.parentElement;
+    }
+    return window.getComputedStyle(document.body).backgroundColor;
+  };
+
+  const evaluateBackground = useCallback(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const navRect = navRef.current?.getBoundingClientRect();
+    const sampleY = Math.min(window.innerHeight - 1, Math.max(0, (navRect?.bottom ?? 72) + 1));
+    const sampleX = window.innerWidth / 2;
+    const underneath = document.elementFromPoint(sampleX, sampleY) as HTMLElement | null;
+    if (!underneath) {
+      setOverLightBackground(false);
+    } else {
+      const background = resolveBackgroundColor(underneath);
+      setOverLightBackground(background ? isColorLight(background) : false);
+    }
+
+    const ctaNode = ctaRef.current;
+    const ctaRect = ctaNode?.getBoundingClientRect();
+    const ctaSampleX = ctaRect ? ctaRect.left + ctaRect.width / 2 : window.innerWidth - Math.min(window.innerWidth * 0.1, 160);
+    const ctaSampleY = ctaRect ? Math.min(window.innerHeight - 1, Math.max(0, ctaRect.bottom + 1)) : sampleY;
+    let restoredPointer = '';
+    let restoredAnchorPointer = '';
+    if (ctaNode) {
+      restoredPointer = ctaNode.style.pointerEvents;
+      ctaNode.style.pointerEvents = 'none';
+    }
+    const ctaAnchor = ctaNode?.querySelector('a') as HTMLElement | null;
+    if (ctaAnchor) {
+      restoredAnchorPointer = ctaAnchor.style.pointerEvents;
+      ctaAnchor.style.pointerEvents = 'none';
+    }
+    const ctaUnderneath = document.elementFromPoint(ctaSampleX, ctaSampleY) as HTMLElement | null;
+    if (ctaAnchor) {
+      ctaAnchor.style.pointerEvents = restoredAnchorPointer;
+    }
+    if (ctaNode) {
+      ctaNode.style.pointerEvents = restoredPointer;
+    }
+    if (!ctaUnderneath) {
+      setCtaOverLightBackground(false);
+      return;
+    }
+    const ctaBackground = resolveBackgroundColor(ctaUnderneath);
+    setCtaOverLightBackground(ctaBackground ? isColorLight(ctaBackground) : false);
+  }, []);
 
   useEffect(() => {
     const onScroll = (currentY: number) => {
@@ -18,6 +120,7 @@ export default function Navbar() {
         setVisible(delta < 0);
         lastYRef.current = currentY;
       }
+      evaluateBackground();
     };
 
     // Attach to a target element
@@ -49,14 +152,18 @@ export default function Navbar() {
       }
     }, 250);
 
+    evaluateBackground();
+    window.addEventListener('resize', evaluateBackground);
+
     return () => {
       cleanupRef.current?.();
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
+      window.removeEventListener('resize', evaluateBackground);
     };
-  }, []);
+  }, [evaluateBackground]);
 
   const handleExploreClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
     const container = document.querySelector('[data-scroll-container="main"]') as HTMLElement | null;
@@ -72,6 +179,7 @@ export default function Navbar() {
   return (
     <>
     <motion.nav
+      ref={navRef}
       initial={{ y: 0, opacity: 1 }}
       animate={{ y: visible ? 0 : -80, opacity: visible ? 1 : 0 }}
       transition={{ type: 'spring', stiffness: 260, damping: 26 }}
@@ -101,7 +209,7 @@ export default function Navbar() {
           <motion.div
             className="absolute inset-0 flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.7 }}
-            animate={!visible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }}
+            animate={!visible && overLightBackground ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
             style={{ backgroundColor: 'rgba(0,0,0,0.20)', borderRadius: '9999px', backdropFilter: 'blur(8px)', padding: 10 }}
           />
@@ -117,12 +225,11 @@ export default function Navbar() {
       </div>
     </div>
     {/* Fixed CTA, always visible and independent of navbar visibility */}
-    <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
+  <div ref={ctaRef} className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
       <a
         href="#hero-two"
         aria-label="Explore products"
-        className="group relative inline-flex items-center justify-center rounded-full border border-[#E24232] px-6 py-2 text-base bg-[#000000]/20 backdrop-blur-md 
-              font-light text-white/90 transition-colors duration-300 overflow-hidden"
+  className={`group relative inline-flex items-center justify-center rounded-full border border-[#E24232] px-6 py-2 text-base font-light text-white/90 transition-colors duration-300 overflow-hidden ${!visible && ctaOverLightBackground ? 'bg-black/20 backdrop-blur-md' : 'bg-transparent backdrop-blur-none'}`}
         style={{ paddingLeft: "12px", paddingRight: "12px", paddingTop: "8px", paddingBottom: "8px" }}
         onClick={handleExploreClick}
       >
