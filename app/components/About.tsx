@@ -19,7 +19,7 @@ export default function About() {
     offset: ['start start', 'end start']
   });
   // Section scale (subtle): zooms out -> slightly in -> rest
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.05, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 1]);
   // Corner radius: curved -> straight -> curved
   const borderRadius = useTransform(scrollYProgress, [0, 0.5, 1], [24, 0, 0]);
   // Content scale (more pronounced) to make text and image grow with the card (disabled on mobile)
