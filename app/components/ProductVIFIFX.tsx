@@ -20,8 +20,8 @@ export default function ProductVIFIFX() {
   }, []);
 
   return (
-    <section className="h-full w-full bg-[#1c392f] text-white pt-24 pb-12 md:py-20">
-      <div className="grid h-full w-full grid-cols-1 items-start gap-12 px-[20px] py-8 md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0">
+    <section className="w-full bg-[#1c392f] text-white pt-24 pb-12 md:h-full md:py-20">
+  <div className="grid w-full grid-cols-1 items-start gap-[100px] px-[20px] py-8 md:h-full md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0">
         {/* Left: Image */}
         <motion.div
           className="flex w-full items-start justify-center pt-[clamp(48px,12vh,120px)] -mb-[clamp(24px,6vh,64px)] md:items-center md:pt-0 md:mb-0"
