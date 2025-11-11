@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function HeroOne() {
   const logos = [
-    { src: "/Coinbase.svg", alt: "Coinbase" },
+    { src: "/baseecosystemfund.svg", alt: "base ecosystem fund" },
     { src: "/scroll.svg", alt: "Scroll" },
     { src: "/bankless.svg", alt: "Bankless" },
   ];
@@ -21,11 +21,11 @@ export default function HeroOne() {
         {/* Animated culture-to-capital line */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
           <div className="flex items-center w-full max-w-[calc(100vw-40px)] md:max-w-[1200px] gap-4 md:gap-8 px-6">
-            <span className="text-xs md:text-sm font-medium uppercase tracking-[0.05em] text-emerald-300/80">
+            <span className="text-xs md:text-sm font-medium capitalize tracking-[0.05em] text-emerald-300/80">
               Where<br className="md:hidden" /> Culture
             </span>
             <motion.span
-              className="relative flex-1 h-[2px] md:h-[3px] bg-emerald-300/40 origin-left"
+              className="relative flex-1 h-[1px] md:h-[1px] bg-emerald-300/40 origin-left"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 1.1, duration: 1.6, ease: "easeInOut" }}
@@ -35,7 +35,7 @@ export default function HeroOne() {
                 aria-hidden="true"
               />
             </motion.span>
-            <span className="text-xs md:text-sm font-medium uppercase tracking-[0.05em] text-emerald-300/80 text-right">
+            <span className="text-xs md:text-sm font-medium capitalize tracking-[0.05em] text-emerald-300/80 text-right">
               Meets<br className="md:hidden" /> Capital
             </span>
           </div>
@@ -80,9 +80,9 @@ export default function HeroOne() {
 
       {/* Backers strip (in normal flow, not absolute) */}
       <div className="relative z-20 flex justify-center bottom-4 md:bottom-8">
-        <div className="w-[min(90vw,1000px)]">
+        <div className="w-[min(75vw,750px)]">
           <div className="flex h-[80px] flex-col items-center justify-center gap-3 rounded-2xl border border-white/5 bg-white/10 px-6 py-3 text-white backdrop-blur-[11px] md:h-[100px] md:flex-row md:justify-around md:gap-10 md:px-10 md:py-0">
-            <p className="w-full text-center text-xs font-medium uppercase tracking-[0.32em] text-white/70 md:w-auto md:text-sm">
+            <p className="w-full text-center text-xs font-medium capitalize tracking-[0.05em] text-white/70 md:w-auto md:text-sm">
               Backed by
             </p>
             <div className="flex w-full items-center justify-center gap-4 md:w-auto md:justify-around md:gap-10">
