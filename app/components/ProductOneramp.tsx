@@ -21,7 +21,10 @@ export default function ProductOneramp() {
   }, []);
 
   return (
-    <section className="w-full bg-[#216e54] text-white pt-24 pb-12 md:h-full md:py-20">
+    <section
+      className="w-full text-white pt-24 pb-12 md:h-full md:py-20"
+      style={{ background: "linear-gradient(180deg, #2D906F 0%, #1F674F 100%)" }}
+    >
   <div className="grid w-full grid-cols-1 items-start gap-[100px] px-[20px] py-8 md:h-full md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0">
         {/* Left: Image */}
         <motion.div

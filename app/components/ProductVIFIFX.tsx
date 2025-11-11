@@ -20,7 +20,10 @@ export default function ProductVIFIFX() {
   }, []);
 
   return (
-    <section className="w-full bg-[#1c392f] text-white pt-24 pb-12 md:h-full md:py-20">
+    <section
+      className="w-full text-white pt-24 pb-12 md:h-full md:py-20"
+      style={{ background: "linear-gradient(180deg, #1C382F 0%, #152C25 100%)" }}
+    >
   <div className="grid w-full grid-cols-1 items-start gap-[100px] px-[20px] py-8 md:h-full md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0">
         {/* Left: Image */}
         <motion.div
