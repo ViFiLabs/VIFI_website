@@ -28,6 +28,8 @@ export default function Footer() {
   const copyControls = useAnimation();
   const copyInView = useInView(copyRef, { amount: 0.6, margin: "-10% 0px -15% 0px" } as unknown as any);
 
+  const headingToArrowGapPx = 50;
+
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
@@ -116,8 +118,8 @@ export default function Footer() {
       return;
     }
 
-  const spacingBetweenHeadingAndArrow = 32; // matches ml-8 offset
-    const minimumRightGap = 170;
+    const spacingBetweenHeadingAndArrow = headingToArrowGapPx;
+  const minimumRightGap = 80;
 
     const updateArrowLength = () => {
       if (!headingTextRef.current) {
@@ -141,7 +143,7 @@ export default function Footer() {
           {/* Heading + rule positioned responsively */}
           <div
             ref={headingRef}
-            className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-[clamp(64px,12vh,128px)]"
+            className="hidden md:flex absolute left-1/2 -translate-x-[80%] top-[clamp(64px,12vh,128px)]"
           >
             <div className="relative flex items-center">
               <h1
@@ -151,7 +153,8 @@ export default function Footer() {
                 Our Team
               </h1>
               <motion.div
-                className="pointer-events-none absolute left-full ml-8 flex items-center top-1/2 -translate-y-1/2"
+                className="pointer-events-none absolute left-full flex items-center top-1/2 -translate-y-1/2"
+                style={{ marginLeft: headingToArrowGapPx }}
                 initial="hidden"
                 animate={headingControls}
                 variants={{
@@ -160,7 +163,7 @@ export default function Footer() {
                 }}
               >
                 <motion.span
-                  className="relative h-[2px] flex-1 origin-right bg-emerald-400/60"
+                  className="relative h-[1px] flex-1 origin-right bg-emerald-400/60"
                   style={{ width: Math.max(0, arrowLength) }}
                   variants={{
                     hidden: { scaleX: 0 },
@@ -168,7 +171,7 @@ export default function Footer() {
                   }}
                 >
                   <span
-                    className="absolute left-0 top-1/2 -translate-y-1/2 translate-x-[-2px] h-0 w-0 border-y-[7px] border-y-transparent border-r-[14px] border-r-emerald-600/100"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[7px] border-y-transparent border-r-[14px] border-r-emerald-600/100"
                 aria-hidden="true"
               />
                 </motion.span>
@@ -229,7 +232,7 @@ export default function Footer() {
                     >
                       <span
                         aria-hidden="true"
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 h-0 w-0 border-y-[6px] border-y-transparent border-r-[14px] border-r-emerald-400/60"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[6px] border-y-transparent border-r-[14px] border-r-emerald-400/60"
                       />
                     </motion.div>
                   </motion.div>
