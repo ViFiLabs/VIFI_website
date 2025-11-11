@@ -53,7 +53,7 @@ export default function HeroOne() {
           />
 
           {/* Desktop H2 */}
-          <div className="absolute bottom-0 left-0 hidden pointer-events-none md:flex md:w-full md:justify-start">
+           <div className="absolute bottom-0 left-0 hidden pointer-events-none md:flex md:w-full md:justify-start md:-bottom-12">
             <motion.h2
               className="text-left text-white font-thin leading-tight text-[clamp(36px,6vw,72px)] max-w-[20ch] md:px-4 md:pb-6 tracking-tight"
               initial={{ opacity: 0, y: 40 }}
