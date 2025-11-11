@@ -80,8 +80,7 @@ export default function HeroTwo() {
         <div className="grid grid-cols-1 gap-4 text-left md:grid-cols-3 md:gap-8">
           <p className="hidden text-sm font-medium text-white/80 md:block md:text-base">Our Products</p>
           <p className="md:col-span-2 text-[18px] leading-[26px] text-white/70 md:text-lg md:leading-relaxed">
-            ViFi Labs delivers the infrastructure that emerging markets need most — FX swaps, tokenized reserves,
-            and seamless remittances — building a borderless financial system designed for the billions still excluded.
+            ViFi Labs is building financial infrastructure for emerging markets, starting with FX swaps, tokenized reserves, and seamless remittances. We’re creating a borderless system designed to serve the billions who remain financially excluded.
           </p>
         </div>
       </div>
