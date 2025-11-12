@@ -269,13 +269,13 @@ export default function Footer() {
 
       {/* footer parallax */}
       <footer className="sticky bottom-0 z-auto h-[10vh] bg-[#2AE89B] flex items-center justify-center ">
-        <div className="w-full items-center content-center flex justify-between text-neutral-900">
+        <div className="w-full max-w-[calc(100vw-40px)] md:max-w-[1200px] items-center content-center flex justify-between text-neutral-900">
           <div className="">
           <span className="text-sm font-medium tracking-wide">2025© ViFiLabs</span>
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="https://x.com/"
+              href="https://x.com/ViFi_Labs"
               aria-label="Visit ViFiLabs on X"
               target="_blank"
               rel="noreferrer"
@@ -283,7 +283,7 @@ export default function Footer() {
               <Image src="/x.svg" alt="X" width={22} height={22} />
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/company/vifi-labs"
               aria-label="Visit ViFiLabs on LinkedIn"
               target="_blank"
               rel="noreferrer"
