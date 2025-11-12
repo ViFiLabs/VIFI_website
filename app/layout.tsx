@@ -80,7 +80,11 @@ export const metadata: Metadata = {
     site: "@ViFi_Labs",
     title: "VIFILABS",
     description: "Bringing emerging market economies onchain",
-    images: [{"url": "https://vifilabs.xyz/og-image.png"}],
+    images: [{"url": "https://vifilabs.xyz/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "VIFILABS social preview",
+    }],
   },
 };
 
