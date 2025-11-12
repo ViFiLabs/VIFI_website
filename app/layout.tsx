@@ -90,6 +90,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="twitter:image" content="https://vifilabs.xyz/og-image.png" />
+
+      </head>
       <body
         suppressHydrationWarning
         className={`${ppObjectSans.variable} ${geistMono.variable} antialiased`}
