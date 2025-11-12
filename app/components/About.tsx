@@ -30,10 +30,13 @@ export default function About() {
   );
 
   return (
-    <div ref={aboutRef} className="h-[200vh] w-full">
+    <div
+      ref={aboutRef}
+      className="w-full md:h-[200vh]"
+    >
       <motion.section
-        style={{ scale, borderRadius }}
-        className="h-screen flex items-center justify-center sticky top-0 overflow-hidden will-change-transform bg-white"
+        style={isLargeScreen ? { scale, borderRadius } : { scale: 1, borderRadius: 0 }}
+        className="flex items-center justify-center bg-white pt-12 pb-10 md:py-0 md:h-screen md:sticky md:top-0 md:overflow-hidden md:will-change-transform"
       >
   <div className="mx-auto w-full max-w-[calc(100vw-40px)] sm:max-w-[min(520px,94vw)] md:max-w-6xl bg-white rounded-[inherit] p-5 sm:p-6 md:p-10 lg:p-12">
           <motion.div
@@ -52,14 +55,14 @@ export default function About() {
 
 
             {/* Right: Image */}
-            <div className="order-1 flex w-full items-center justify-center md:order-2">
+            <div className="order-1 flex w-full items-center justify-center pt-[clamp(48px,12vh,120px)] -mb-[clamp(24px,6vh,64px)] md:order-2 md:items-center md:pt-0 md:mb-0">
               <div className="relative w-full h-[clamp(220px,38vh,360px)] max-w-[calc(100vw-40px)] sm:max-w-[min(440px,88vw)] overflow-hidden rounded-3xl">
                 <Image
                   src="/about.png"
                   alt="About ViFi"
                   fill
                   sizes="(min-width: 1024px) 440px, 60vw"
-                  className="object-cover"
+                  className="rounded-[32px] object-cover translate-y-[clamp(16px,6vh,40px)] md:translate-y-0"
                   priority
                 />
               </div>
