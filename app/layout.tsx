@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     siteName: "VIFILABS",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://vifilabs.xyz/og-image.png",
         width: 1200,
         height: 630,
         alt: "VIFILABS social preview",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VIFILABS",
     description: "Bringing emerging market economies onchain",
-    images: ["/og-image.png"],
+    images: ["https://vifilabs.xyz/og-image.png"],
   },
 };
 
