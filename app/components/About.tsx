@@ -38,7 +38,7 @@ export default function About() {
         style={isLargeScreen ? { scale, borderRadius } : { scale: 1, borderRadius: 0 }}
         className="flex items-center justify-center bg-white pt-12 pb-10 md:py-0 md:h-screen md:sticky md:top-0 md:overflow-hidden md:will-change-transform"
       >
-  <div className="mx-auto w-full max-w-[calc(100vw-40px)] sm:max-w-[min(520px,94vw)] md:max-w-6xl bg-white rounded-[inherit] p-5 sm:p-6 md:p-10 lg:p-12">
+    <div className="mx-auto w-full max-w-[calc(100vw-40px)] sm:max-w-[min(520px,94vw)] md:max-w-6xl bg-white rounded-[inherit] p-5 sm:p-6 md:p-10 lg:p-12">
           <motion.div
             style={{ scale: contentScale }}
             className="grid grid-cols-1 items-center gap-8 sm:gap-10 md:grid-cols-2 md:gap-12"

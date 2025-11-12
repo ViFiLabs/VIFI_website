@@ -138,8 +138,8 @@ export default function Footer() {
 
   return (
     <>
-      <div className="relative min-h-[100vh]">
-        <div className="sticky top-0 h-screen bg-gradient-to-b from-[#191919] to-[#188257] z-20 shadow-xl">
+      <div className="relative min-h-[60vh] md:min-h-[100vh]">
+        <div className="bg-gradient-to-b from-[#191919] to-[#188257] z-20 shadow-xl md:sticky md:top-0 md:h-screen">
           {/* Heading + rule positioned responsively */}
           <div
             ref={headingRef}
@@ -268,7 +268,7 @@ export default function Footer() {
       </div>
 
       {/* footer parallax */}
-      <footer className="sticky bottom-0 z-auto h-[10vh] bg-[#2AE89B] flex items-center justify-center ">
+  <footer className="h-[10vh] bg-[#2AE89B] flex items-center justify-center md:sticky md:bottom-0">
         <div className="w-full max-w-[calc(100vw-40px)] md:max-w-[1200px] items-center content-center flex justify-between text-neutral-900">
           <div className="">
           <span className="text-sm font-medium tracking-wide">2025© ViFiLabs</span>
