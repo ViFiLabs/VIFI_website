@@ -59,6 +59,28 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "VIFILABS",
   description: "Bringing emerging market economies onchain",
+  openGraph: {
+    title: "VIFILABS",
+    description: "Bringing emerging market economies onchain",
+    url: "/og-image.png",
+    siteName: "VIFILABS",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "VIFILABS social preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VIFILABS",
+    description: "Bringing emerging market economies onchain",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
