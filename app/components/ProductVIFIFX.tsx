@@ -61,12 +61,12 @@ export default function ProductVIFIFX() {
             <h2
               className="mb-6 text-4xl sm:text-5xl md:text-6xl font-thin tracking-tight leading-[1.1]"
             >
-              ViFi FX
+              ViFi
             </h2>
             <p
               className="mb-4 text-sm font-normal sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
             >
-             ViFi FX is the world’s first capital-efficient decentralized exchange for emerging market stablecoins.
+             ViFi is the world’s first capital-efficient decentralized exchange for emerging market stablecoins.
             </p>
             <p
               className="mb-4 text-sm font-normal sm:text-base md:text-lg leading-7 md:leading-8 text-white/85"
