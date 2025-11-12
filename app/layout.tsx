@@ -77,9 +77,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@ViFi_Labs",
     title: "VIFILABS",
     description: "Bringing emerging market economies onchain",
-    images: ["https://vifilabs.xyz/og-image.png"],
+    images: [{"url": "https://vifilabs.xyz/og-image.png"}],
   },
 };
 
