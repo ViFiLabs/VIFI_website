@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VIFILABS",
     description: "Bringing emerging market economies onchain",
-    url: "/og-image.png",
+    url: "https://vifilabs.xyz",
     siteName: "VIFILABS",
     images: [
       {
