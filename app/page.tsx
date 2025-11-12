@@ -10,15 +10,15 @@ export default function Home() {
   return (
   <div className="h-screen overflow-y-scroll overflow-x-hidden" data-scroll-container="main">
       {/* Hero Section - Page 1 (parallax slide over) */}
-      <div className="relative h-[100vh] snap-start">
-        <div className="sticky top-0 h-screen">
+      <div className="relative snap-start min-h-screen md:h-[100vh]">
+        <div className="md:sticky md:top-0 md:h-screen">
           <HeroOne />
         </div>
       </div>
 
       {/* Hero Section - Page 2 (parallax slide over) */}
-      <div className="relative h-[100vh] md:h-[100vh] snap-start" id="hero-two">
-        <div className="sticky top-0 h-screen">
+      <div className="relative snap-start min-h-screen md:h-[100vh]" id="hero-two">
+        <div className="md:sticky md:top-0 md:h-screen">
           <HeroTwo />
         </div>
       </div>

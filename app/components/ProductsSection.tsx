@@ -35,14 +35,14 @@ function ProductCard({ children, index, enableParallax }: ProductCardProps) {
   }
 
   return (
-    <div ref={cardRef} className="h-screen sticky top-0 w-full" style={{ zIndex: index }}>
+    <div ref={cardRef} className="w-full md:sticky md:top-0 md:h-screen" style={{ zIndex: index }}>
       <motion.div
         style={{
           scale,
           borderRadius,
           transformOrigin: 'top center',
         }}
-        className="h-full w-full will-change-transform origin-top overflow-hidden"
+        className="w-full will-change-transform origin-top overflow-hidden md:h-full"
       >
         {children}
       </motion.div>
