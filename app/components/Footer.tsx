@@ -163,7 +163,7 @@ export default function Footer() {
                 }}
               >
                 <motion.span
-                  className="relative h-[1px] flex-1 origin-right bg-emerald-400/60"
+                  className="relative h-[1px] flex-1 origin-right bg-[#2D916F]"
                   style={{ width: Math.max(0, arrowLength) }}
                   variants={{
                     hidden: { scaleX: 0 },
@@ -171,7 +171,7 @@ export default function Footer() {
                   }}
                 >
                   <span
-                    className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[7px] border-y-transparent border-r-[14px] border-r-emerald-600/100"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[7px] border-y-transparent border-r-[14px] border-r-[#2D916F]"
                 aria-hidden="true"
               />
                 </motion.span>
@@ -218,7 +218,7 @@ export default function Footer() {
                   >
                     <p className="text-[30px] leading-[1.2] font-thin">Our Team</p>
                     <motion.div
-                      className="relative h-[2px] flex-1 origin-right bg-emerald-400/60"
+                      className="relative h-[2px] flex-1 origin-right bg-[#2D916F]"
                       variants={{
                         hidden: { scaleX: 0, opacity: 0 },
                         visible: {
@@ -232,7 +232,7 @@ export default function Footer() {
                     >
                       <span
                         aria-hidden="true"
-                        className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[6px] border-y-transparent border-r-[14px] border-r-emerald-400/60"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 h-0 w-0 border-y-[6px] border-y-transparent border-r-[14px] border-r-[#2D916F]"
                       />
                     </motion.div>
                   </motion.div>
@@ -268,10 +268,38 @@ export default function Footer() {
       </div>
 
       {/* footer parallax */}
-      <footer className="sticky bottom-0 z-auto h-[7vh] w-full bg-[#2AE89B] flex items-center justify-center px-6">
-        {/* <p className="text-center text-[36px] md:text-[54px] font-bold leading-tight text-black max-w-[900px]">
-          Now we’re building it—for everyone else who’s been left out of the system.
-        </p> */}
+      <footer className="sticky bottom-0 z-auto h-[10vh] bg-[#2AE89B] flex items-center justify-center ">
+        <div className="w-full items-center content-center flex justify-between text-neutral-900">
+          <div className="">
+          <span className="text-sm font-medium tracking-wide">2025© ViFiLabs</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://x.com/"
+              aria-label="Visit ViFiLabs on X"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image src="/x.svg" alt="X" width={22} height={22} />
+            </a>
+            <a
+              href="https://linkedin.com/"
+              aria-label="Visit ViFiLabs on LinkedIn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image src="/linkedin.svg" alt="LinkedIn" width={22} height={22} />
+            </a>
+            <a
+              href="https://t.me/"
+              aria-label="Visit ViFiLabs on Telegram"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image src="/telegram.svg" alt="Telegram" width={22} height={22} />
+            </a>
+          </div>
+        </div>
       </footer>
     </>
   );

@@ -25,13 +25,13 @@ export default function HeroOne() {
               Where<br className="md:hidden" /> Culture
             </span>
             <motion.span
-              className="relative flex-1 h-[1px] md:h-[1px] bg-emerald-300/40 origin-left"
+              className="relative flex-1 h-[1px] md:h-[1px] bg-[#2d916f] origin-left"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 1.1, duration: 1.6, ease: "easeInOut" }}
             >
               <span
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 h-0 w-0 border-l-[10px] border-l-emerald-300/60 border-y-[7px] border-y-transparent"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 h-0 w-0 border-l-[10px] border-l-[#2d916f] border-y-[7px] border-y-transparent"
                 aria-hidden="true"
               />
             </motion.span>

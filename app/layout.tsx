@@ -58,7 +58,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "VIFILABS",
-  description: "Powering Parallel Economies for the Global South",
+  description: "Bringing emerging market economies onchain",
 };
 
 export default function RootLayout({
