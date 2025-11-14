@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 
 export default function HeroOne() {
   const logos = [
-    { src: "/baseecosystemfund.svg", alt: "base ecosystem fund" },
-    { src: "/scroll.svg", alt: "Scroll" },
-    { src: "/bankless.svg", alt: "Bankless" },
+    { src: "/baseecosystem.png", alt: "base ecosystem fund" },
+    { src: "/scroll.png", alt: "Scroll" },
+    { src: "/bankless.png", alt: "Bankless" },
   ];
 
   return (
