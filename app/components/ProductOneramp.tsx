@@ -27,7 +27,7 @@ export default function ProductOneramp() {
     >
   <div className="grid w-full grid-cols-1 items-start gap-[100px] px-[20px] py-8 md:h-full md:grid-cols-2 md:gap-16 md:items-center md:px-12 md:py-0">
         {/* Left: Image */}
-        <motion.div
+      <motion.div
           className="flex w-full items-start justify-center pt-[clamp(48px,12vh,120px)] -mb-[clamp(24px,6vh,64px)] md:items-center md:pt-0 md:mb-0"
           initial={enableAnimation ? { x: -140, opacity: 0 } : { x: 0, opacity: 1 }}
           whileInView={enableAnimation ? { x: 0, opacity: 1 } : undefined}
@@ -36,18 +36,15 @@ export default function ProductOneramp() {
           viewport={enableAnimation ? { amount: 0.4, once: false } : undefined}
         >
           <div
-            className="relative aspect-[4/3] 
-                       w-[min(90vw,420px)] 
-                       sm:w-[min(80vw,480px)] 
-                       md:w-[min(40vw,560px)]"
+            className="relative w-[min(80vw,360px)] sm:w-[min(70vw,400px)] md:w-[min(28vw,420px)] overflow-hidden rounded-[24px] translate-y-[clamp(16px,6vh,40px)] md:translate-y-0"
           >
-            <Image
-              src="/oneramp.png"
-              alt="oneRamp"
-              fill
-              sizes="(min-width: 1280px) 560px, (min-width: 768px) 40vw, 80vw"
-              className="object-contain translate-y-[clamp(16px,6vh,40px)] md:translate-y-0"
-              priority
+            <video
+              src="/onerampvid.mp4"
+              className="block h-auto w-full"
+              autoPlay
+              loop
+              muted
+              playsInline
             />
           </div>
         </motion.div>
