@@ -28,17 +28,24 @@ export default function Home() {
       {/* Mid Section Hero (inline 60vh section) */}
       <div className="snap-start">
         <MidSectionHero />
+       
       </div>
 
       {/* About Section (component already handles its own sticky/200vh) */}
-      <div className="snap-start">
+        <div className="snap-start">
+
         <About />
+        
       </div>
        <div className="snap-start">
+        
         <Tokenized />
+       
       </div>
-      <div > 
-      <Footer />
+      <div className="relative snap-start min-h-screen md:h-[100vh]"> 
+        <div className="md:sticky md:top-0 md:h-screen">
+        <Footer />
+        </div>
       </div>
     </div>
   );
