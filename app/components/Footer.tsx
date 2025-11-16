@@ -68,8 +68,16 @@ export default function Footer() {
   );
 
   const hasInitializedImage = useRef(false);
+  const shouldAnimateImage = isDesktop;
 
   useEffect(() => {
+    if (!shouldAnimateImage) {
+      controls.stop();
+      controls.set(visibleImageState);
+      hasInitializedImage.current = false;
+      return;
+    }
+
     if (!hasInitializedImage.current) {
       controls.set(inView ? visibleImageState : hiddenImageState);
       hasInitializedImage.current = true;
@@ -81,7 +89,7 @@ export default function Footer() {
     } else {
       controls.start({ ...hiddenImageState, transition: { duration: 0.6, ease: "easeIn" } });
     }
-  }, [controls, hiddenImageState, inView, visibleImageState]);
+  }, [controls, hiddenImageState, inView, shouldAnimateImage, visibleImageState]);
 
   useEffect(() => {
     if (!isDesktop) {
@@ -138,7 +146,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className="relative min-h-[60vh] md:min-h-[100vh]">
+      <div className="relative md:min-h-[100vh]">
         <div className="bg-gradient-to-b from-[#191919] to-[#188257] z-20 shadow-xl md:sticky md:top-0 md:h-screen">
           {/* Heading + rule positioned responsively */}
           <div
@@ -185,8 +193,8 @@ export default function Footer() {
               <motion.div
                 ref={imageRef}
                 className="relative h-[clamp(240px,55vh,540px)] w-full max-w-[520px] flex-shrink-0 self-start md:self-center md:h-[clamp(320px,75vh,820px)] md:w-[clamp(280px,45vw,760px)]"
-                animate={controls}
-                initial={hiddenImageState}
+                animate={shouldAnimateImage ? controls : visibleImageState}
+                initial={shouldAnimateImage ? hiddenImageState : visibleImageState}
               >
                 <Image
                   src="/footer.svg"
@@ -246,9 +254,7 @@ export default function Footer() {
                   initial="hidden"
                   animate={copyControls}
                 >
-                ViFi Labs builds on-chain financial infrastructure for emerging markets — connecting local payment and capital networks to global liquidity.
-                <br />
-                Our suite of protocols powers on-chain FX, real-world asset tokenization, and crypto-to-fiat settlement across Africa, LATAM, and beyond. From stablecoin-based foreign exchange to tokenized bonds and instant mobile-money rails,
+                We’re not outsiders trying to “unlock” emerging markets. We live here. We build here. Our families transact on mobile money, buy airtime with USSD, and pool money in group chats. ViFi is what we wish existed five years ago.
                 </motion.p>
 
                 <motion.p
@@ -260,7 +266,7 @@ export default function Footer() {
                   initial="hidden"
                   animate={copyControls}
                 >
-                  ViFi is building the programmable financial layer for the next 3 billion users.
+                Now we’re building it — for everyone else who’s been left out of the system. 
                 </motion.p>
               </div>
             </div>
