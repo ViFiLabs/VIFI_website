@@ -58,7 +58,7 @@ export default function HeroTwo() {
        {/* explainer */}
       <div className="mx-auto w-full max-w-[calc(100vw-40px)] text-center py-10 md:max-w-5xl md:py-12">
         <h2 className="text-2xl md:text-4xl lg:text-4xl xl:text-5xl font-extralight leading-relaxed md:leading-relaxed lg:leading-[1.2]">
-          <TextReveal text="ViFi Labs is a technology studio that brings emerging market economies. We are bringing emerging market payment and capital networks onchain through our innovative product offerings." />
+          <TextReveal text="ViFi Labs is a technology studio that powers emerging market economies. We are bringing emerging market payment and capital networks onchain through our innovative product offerings." />
         </h2>
       </div>
 
