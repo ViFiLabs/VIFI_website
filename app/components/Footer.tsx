@@ -275,7 +275,7 @@ export default function Footer() {
       </div>
 
       {/* footer parallax */}
-  <footer className="h-[10vh] bg-[#2AE89B] flex items-center justify-center md:sticky md:bottom-0">
+      {/* <footer className="h-[10vh] bg-[#2AE89B] flex items-center justify-center md:sticky md:bottom-0">
         <div className="w-full max-w-[calc(100vw-40px)] md:max-w-[1200px] items-center content-center flex justify-between text-neutral-900">
           <div className="">
           <span className="text-sm font-medium tracking-wide">2025© ViFiLabs</span>
@@ -307,7 +307,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </>
   );
 }
