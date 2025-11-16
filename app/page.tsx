@@ -37,7 +37,7 @@ export default function Home() {
        <div className="snap-start">
         <Tokenized />
       </div>
-      <div className="snap-start"> 
+      <div > 
       <Footer />
       </div>
     </div>
