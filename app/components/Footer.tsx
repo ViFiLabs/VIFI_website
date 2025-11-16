@@ -209,7 +209,7 @@ export default function Footer() {
               {/* Right: copy block */}
               <div
                 ref={copyRef}
-                className="flex w-full flex-col gap-y-3 sm:gap-y-5 lg:gap-y-8 justify-center text-left max-w-[calc(100vw-40px)] md:max-w-[min(65ch,520px)] text-white px-3 sm:px-5 md:px-0 md:pl-10 lg:pl-16 xl:pl-20"
+                className="flex w-full flex-col gap-y-3 sm:gap-y-5 lg:gap-y-8 justify-center text-left max-w-[calc(100vw-40px)] md:max-w-[min(65ch,520px)] text-white px-3 sm:px-5 md:px-0 md:pl-10 lg:pl-16 xl:pl-20 pb-16 md:pb-0"
               >
                 <div
                   ref={mobileHeadingRef}
@@ -246,7 +246,7 @@ export default function Footer() {
                   </motion.div>
                 </div>
                 <motion.p
-                  className="text-[15px] sm:text-[18px] lg:text-xl font-medium leading-relaxed text-neutral-200 mb-5 md:mb-12"
+                  className="text-[18px] sm:text-[18px] lg:text-xl font-normal leading-relaxed text-neutral-200 mb-5 md:mb-12"
                   variants={{
                     hidden: { opacity: 0, x: 60 },
                     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut", delay: 0.3 } },
@@ -258,7 +258,7 @@ export default function Footer() {
                 </motion.p>
 
                 <motion.p
-                  className="text-[16px] sm:text-[30px] font-thin lg:text-[42px] leading-tight text-white"
+                  className="text-[36px] sm:text-[30px] font-thin lg:text-[42px] leading-tight text-white"
                   variants={{
                     hidden: { opacity: 0, x: 80 },
                     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut", delay: 0.65 } },
@@ -275,7 +275,7 @@ export default function Footer() {
       </div>
 
       {/* footer parallax */}
-      {/* <footer className="h-[10vh] bg-[#2AE89B] flex items-center justify-center md:sticky md:bottom-0">
+      <footer className="h-[10vh] bg-[#2AE89B] flex items-center justify-center md:sticky md:bottom-0">
         <div className="w-full max-w-[calc(100vw-40px)] md:max-w-[1200px] items-center content-center flex justify-between text-neutral-900">
           <div className="">
           <span className="text-sm font-medium tracking-wide">2025© ViFiLabs</span>
@@ -307,7 +307,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-      </footer> */}
+      </footer>
     </>
   );
 }
