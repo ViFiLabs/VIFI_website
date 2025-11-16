@@ -57,6 +57,7 @@ export default function MidSectionHero() {
   const gap = 16; // px spacing approximation between words
   const majorityShift = useTransform(scrollYProgress, [0.6, 0.95], [0, -(unseenWidth + gap)]);
   const majorityX = useSpring(majorityShift, { stiffness: 180, damping: 26, mass: 0.3 });
+  const majorityColor = useTransform(scrollYProgress, [0.8, 0.98], ['#FFFFFF', '#2AE89B']);
 
   return (
   <section ref={sectionRef} className="h-[40vh] sm:h-[60vh] bg-black-400 snap-start flex items-center">
@@ -86,7 +87,10 @@ export default function MidSectionHero() {
               </span>
 
               {/* Majority slides into place */}
-              <motion.span style={{ x: majorityX }} className="inline-block">
+              <motion.span
+                style={{ x: majorityX, color: majorityColor }}
+                className="inline-block"
+              >
                 Majority
               </motion.span>
             </span>
@@ -95,7 +99,7 @@ export default function MidSectionHero() {
               <span className="inline-block line-through decoration-white decoration-2 md:decoration-4">
                 Unseen
               </span>
-              <span className="inline-block">&nbsp;Majority</span>
+              <span className="inline-block text-[#2AE89B]">&nbsp;Majority</span>
             </span>
           )}
         </h1>

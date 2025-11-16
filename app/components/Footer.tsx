@@ -150,7 +150,7 @@ export default function Footer() {
                 ref={headingTextRef}
                 className="whitespace-nowrap text-4xl md:text-6xl lg:text-6xl font-extralight tracking-wider text-white"
               >
-                Our Team
+                Our Ethos
               </h1>
               <motion.div
                 className="pointer-events-none absolute left-full flex items-center top-1/2 -translate-y-1/2"
@@ -216,7 +216,7 @@ export default function Footer() {
                     initial="hidden"
                     animate={mobileHeadingControls}
                   >
-                    <p className="text-[30px] leading-[1.2] font-thin">Our Team</p>
+                    <p className="text-[30px] leading-[1.2] font-thin">Our Ethos</p>
                     <motion.div
                       className="relative h-[2px] flex-1 origin-right bg-[#2D916F]"
                       variants={{
@@ -246,8 +246,9 @@ export default function Footer() {
                   initial="hidden"
                   animate={copyControls}
                 >
-                  We’re not outsiders trying to “unlock” emerging markets. We live here. We build here. Our families transact on
-                  mobile money, buy airtime with USSD, and pool money in group chats. ViFi is what we wish existed five years ago.
+                ViFi Labs builds on-chain financial infrastructure for emerging markets — connecting local payment and capital networks to global liquidity.
+                <br />
+                Our suite of protocols powers on-chain FX, real-world asset tokenization, and crypto-to-fiat settlement across Africa, LATAM, and beyond. From stablecoin-based foreign exchange to tokenized bonds and instant mobile-money rails,
                 </motion.p>
 
                 <motion.p
@@ -259,7 +260,7 @@ export default function Footer() {
                   initial="hidden"
                   animate={copyControls}
                 >
-                  Now we’re building it — for everyone else who’s been left out of the system.
+                  ViFi is building the programmable financial layer for the next 3 billion users.
                 </motion.p>
               </div>
             </div>

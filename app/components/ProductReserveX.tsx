@@ -59,7 +59,7 @@ export default function ProductReserveX() {
         >
           <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:gap-y-8 w-full max-w-[calc(100vw-40px)] md:max-w-[560px] text-left">
             <h2
-              className="mb-6 text-4xl font-thin sm:text-5xl md:text-6xl tracking-tight leading-[1.1]"
+              className="mb-6 text-4xl font-thin sm:text-5xl md:text-6xl tracking-wide leading-[1.1]"
             >
               ReserveX
             </h2>
