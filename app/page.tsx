@@ -26,13 +26,13 @@ export default function Home() {
       {/* Products Section - Horizontal stack */}
       <ProductsSection />
       {/* Mid Section Hero (inline 60vh section) */}
-      <div className="snap-start">
+      {/* <div className="snap-start">
         <MidSectionHero />
        
-      </div>
+      </div> */}
 
       {/* About Section (component already handles its own sticky/200vh) */}
-        <div className="snap-start">
+        {/* <div className="snap-start">
 
         <About />
         
@@ -41,12 +41,12 @@ export default function Home() {
         
         <Tokenized />
        
-      </div>
-      <div className="relative snap-start min-h-screen md:h-[100vh]"> 
+      </div> */}
+      {/* <div className="relative snap-start min-h-screen md:h-[100vh]"> 
         <div className="md:sticky md:top-0 md:h-screen">
         <Footer />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
