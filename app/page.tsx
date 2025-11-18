@@ -8,35 +8,18 @@ import Footer from './components/Footer';
 
 export default function Home() {
   return (
-  <div className="h-screen overflow-y-scroll overflow-x-hidden" data-scroll-container="main">
-      {/* Hero Section - Page 1 (parallax slide over) */}
- 
-          <HeroOne />
-    
-
-      {/* Hero Section - Page 2 (parallax slide over) */}
-      
-          <HeroTwo />
-
-
-      {/* Products Section - Horizontal stack */}
+  <div className="h-screen overflow-x-hidden" data-scroll-container="main">
+      <HeroOne />
+      <HeroTwo />
       <ProductsSection />
-      {/* Mid Section Hero (inline 60vh section) */}
-      
         <MidSectionHero />
-       
-   
-
-      {/* About Section (component already handles its own sticky/200vh) */}
-     
-
         <About />
-        
-
         <Tokenized />
-
+      <div className="relative min-h-screen md:h-[100vh]"> 
+        <div className=" md:top-0 md:h-screen">
         <Footer />
-
+        </div>
+      </div>
     </div>
   );
 }
