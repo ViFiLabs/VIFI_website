@@ -24,7 +24,7 @@ export default function Home() {
       </div>
 
       {/* Products Section - Horizontal stack */}
-      <ProductsSection />
+      {/* <ProductsSection /> */}
       {/* Mid Section Hero (inline 60vh section) */}
       {/* <div className="snap-start">
         <MidSectionHero />
@@ -41,8 +41,8 @@ export default function Home() {
         
         <Tokenized />
        
-      </div> */}
-      {/* <div className="relative snap-start min-h-screen md:h-[100vh]"> 
+      </div>
+      <div className="relative snap-start min-h-screen md:h-[100vh]"> 
         <div className="md:sticky md:top-0 md:h-screen">
         <Footer />
         </div>
