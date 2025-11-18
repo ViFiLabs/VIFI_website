@@ -12,13 +12,11 @@ export default function Home() {
       <HeroOne />
       <HeroTwo />
       <ProductsSection />
-        <MidSectionHero />
-        <About />
-        <Tokenized />
-      <div className="relative min-h-screen md:h-[100vh]"> 
-        <div className=" md:top-0 md:h-screen">
-        <Footer />
-        </div>
+      <MidSectionHero />
+      <About />
+      <Tokenized />
+      <div className="relative "> 
+      <Footer />
       </div>
     </div>
   );
