@@ -11,13 +11,13 @@ export default function Home() {
   <div className="h-screen overflow-x-hidden" data-scroll-container="main">
       <HeroOne />
       <HeroTwo />
-      <ProductsSection />
+      {/* <ProductsSection />
       <MidSectionHero />
       <About />
       <Tokenized />
       <div className="relative "> 
       <Footer />
-      </div> 
+      </div>  */}
     </div>
   );
 }
