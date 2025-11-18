@@ -38,7 +38,7 @@ export default function ProductReserveX() {
             className="relative aspect-[4/3] w-[min(90vw,420px)] sm:w-[min(80vw,480px)] md:w-[min(40vw,560px)] overflow-hidden rounded-[24px] translate-y-[clamp(16px,6vh,40px)] md:translate-y-0"
           >
             <video
-              src="/reservex.mp4"
+              src="/reservexnew.mp4"
               className="absolute inset-0 h-full w-full object-cover"
               autoPlay
               loop
