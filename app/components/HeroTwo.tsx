@@ -53,7 +53,7 @@ export default function HeroTwo() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen snap-start flex flex-col justify-around items-center bg-gradient-to-b from-[#192621] to-[#191919] py-12 md:py-16"
+      className="min-h-screen flex flex-col justify-around items-center bg-gradient-to-b from-[#192621] to-[#191919] py-12 md:py-16"
     >
        {/* explainer */}
       <div className="mx-auto w-full max-w-[calc(100vw-40px)] text-center py-10 md:max-w-5xl md:py-12">

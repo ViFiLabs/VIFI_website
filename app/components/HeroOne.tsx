@@ -12,7 +12,7 @@ export default function HeroOne() {
 
   return (
     <section
-      className="relative min-h-screen snap-start bg-cover bg-center bg-no-repeat flex flex-col justify-between"
+      className="relative min-h-screen bg-cover bg-center bg-no-repeat flex flex-col justify-between"
       style={{ backgroundImage: "url('/herobg.png')" }}
     >
       {/* Top content wrapper */}
