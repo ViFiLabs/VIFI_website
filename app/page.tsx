@@ -15,9 +15,9 @@ export default function Home() {
       <MidSectionHero />
       <About />
       <Tokenized />
-      <div className="relative "> 
+      {/* <div className="relative "> 
       <Footer />
-      </div> 
+      </div>  */}
     </div>
   );
 }
