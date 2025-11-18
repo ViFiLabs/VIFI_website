@@ -9,15 +9,15 @@ import Footer from './components/Footer';
 export default function Home() {
   return (
   <div className="h-screen overflow-x-hidden" data-scroll-container="main">
-      {/* <HeroOne />
-      <HeroTwo /> */}
+      <HeroOne />
+      <HeroTwo />
       <ProductsSection />
-      {/* <MidSectionHero />
+      <MidSectionHero />
       <About />
       <Tokenized />
       <div className="relative "> 
       <Footer />
-      </div>  */}
+      </div> 
     </div>
   );
 }
