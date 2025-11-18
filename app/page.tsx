@@ -10,11 +10,11 @@ export default function Home() {
   return (
   <div className="h-screen overflow-y-scroll overflow-x-hidden" data-scroll-container="main">
       {/* Hero Section - Page 1 (parallax slide over) */}
-      <div className="relative snap-start min-h-screen md:h-[100vh]">
+      {/* <div className="relative snap-start min-h-screen md:h-[100vh]">
         <div className="md:sticky md:top-0 md:h-screen">
           <HeroOne />
         </div>
-      </div>
+      </div> */}
 
       {/* Hero Section - Page 2 (parallax slide over) */}
       {/* <div className="relative snap-start min-h-screen md:h-[100vh]" id="hero-two">
@@ -26,10 +26,10 @@ export default function Home() {
       {/* Products Section - Horizontal stack */}
       <ProductsSection />
       {/* Mid Section Hero (inline 60vh section) */}
-      {/* <div className="snap-start">
+      <div className="snap-start">
         <MidSectionHero />
        
-      </div> */}
+      </div>
 
       {/* About Section (component already handles its own sticky/200vh) */}
         {/* <div className="snap-start">
