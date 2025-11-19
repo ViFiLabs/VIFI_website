@@ -226,7 +226,7 @@ export default function Footer() {
                   >
                     <p className="text-[30px] leading-[1.2] font-thin">Our Ethos</p>
                     <motion.div
-                      className="relative h-[2px] flex-1 origin-right bg-[#2D916F]"
+                      className="relative h-[1px] flex-1 origin-right bg-[#2D916F]"
                       variants={{
                         hidden: { scaleX: 0, opacity: 0 },
                         visible: {
