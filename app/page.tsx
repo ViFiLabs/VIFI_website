@@ -8,7 +8,10 @@ import Footer from './components/Footer';
 
 export default function Home() {
   return (
-  <div className="h-screen overflow-x-hidden" data-scroll-container="main">
+  <div
+    className="h-screen overflow-y-scroll overflow-x-hidden overscroll-y-none overscroll-x-none"
+    data-scroll-container="main"
+  >
       <HeroOne />
       <HeroTwo />
       <ProductsSection />
