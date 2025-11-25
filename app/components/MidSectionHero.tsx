@@ -57,12 +57,12 @@ export default function MidSectionHero() {
   const gap = 16; // px spacing approximation between words
   const majorityShift = useTransform(scrollYProgress, [0.6, 0.95], [0, -(unseenWidth + gap)]);
   const majorityX = useSpring(majorityShift, { stiffness: 180, damping: 26, mass: 0.3 });
-  const majorityColor = useTransform(scrollYProgress, [0.8, 0.98], ['#FFFFFF', '#2AE89B']);
+  const majorityColor = useTransform(scrollYProgress, [0.8, 0.98], ['currentColor', '#2AE89B']);
 
   return (
   <section ref={sectionRef} className="h-[40vh] sm:h-[60vh] bg-black-400 snap-start flex items-center">
       <div className="w-full px-6 sm:px-8 md:px-12 flex justify-center">
-        <h1 className="text-white font-light tracking-tight leading-[0.9] text-left text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-[8vw] max-w-[min(90vw,1100px)]">
+        <h1 className="text-black dark:text-white font-light tracking-tight leading-[0.9] text-left text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-[8vw] max-w-[min(90vw,1100px)]">
           <span className="block">A Protocol for the</span>
 
           {(shouldAnimate ?? false) ? (
@@ -77,7 +77,7 @@ export default function MidSectionHero() {
                 {/* Strike line */}
                 <motion.span
                   style={{ scaleX: strikeProgress }}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 h-[0.08em] w-full bg-white origin-left z-10"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 h-[0.08em] w-full bg-black dark:bg-white origin-left z-10"
                 />
               </motion.span>
 
@@ -96,7 +96,7 @@ export default function MidSectionHero() {
             </span>
           ) : (
             <span className="block lg:whitespace-nowrap">
-              <span className="inline-block line-through decoration-white decoration-2 md:decoration-4">
+              <span className="inline-block line-through decoration-black dark:decoration-white decoration-2 md:decoration-4">
                 Unseen
               </span>
               <span className="inline-block text-[#2AE89B]">&nbsp;Majority</span>
