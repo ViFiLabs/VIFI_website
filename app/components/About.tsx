@@ -32,7 +32,7 @@ export default function About() {
   return (
     <div
       ref={aboutRef}
-      className="w-full md:h-[200vh]"
+      className="w-full md:h-[200vh] bg-black"
     >
       <motion.section
         style={isLargeScreen ? { scale, borderRadius } : { scale: 1, borderRadius: 0 }}
