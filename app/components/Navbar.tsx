@@ -6,12 +6,10 @@ import { motion } from 'framer-motion';
 export default function Navbar() {
   const [visible, setVisible] = useState(true);
   const [overLightBackground, setOverLightBackground] = useState(false);
-  const [ctaOverLightBackground, setCtaOverLightBackground] = useState(false);
   const lastYRef = useRef(0);
   const cleanupRef = useRef<() => void>(() => {});
   const intervalRef = useRef<number | null>(null);
   const navRef = useRef<HTMLDivElement | null>(null);
-  const ctaRef = useRef<HTMLDivElement | null>(null);
 
   const parseColor = (color: string) => {
     const rgbaMatch = color.match(/rgba?\(([^)]+)\)/);
@@ -80,35 +78,6 @@ export default function Navbar() {
       const background = resolveBackgroundColor(underneath);
       setOverLightBackground(background ? isColorLight(background) : false);
     }
-
-    const ctaNode = ctaRef.current;
-    const ctaRect = ctaNode?.getBoundingClientRect();
-    const ctaSampleX = ctaRect ? ctaRect.left + ctaRect.width / 2 : window.innerWidth - Math.min(window.innerWidth * 0.1, 160);
-    const ctaSampleY = ctaRect ? Math.min(window.innerHeight - 1, Math.max(0, ctaRect.bottom + 1)) : sampleY;
-    let restoredPointer = '';
-    let restoredAnchorPointer = '';
-    if (ctaNode) {
-      restoredPointer = ctaNode.style.pointerEvents;
-      ctaNode.style.pointerEvents = 'none';
-    }
-    const ctaAnchor = ctaNode?.querySelector('a') as HTMLElement | null;
-    if (ctaAnchor) {
-      restoredAnchorPointer = ctaAnchor.style.pointerEvents;
-      ctaAnchor.style.pointerEvents = 'none';
-    }
-    const ctaUnderneath = document.elementFromPoint(ctaSampleX, ctaSampleY) as HTMLElement | null;
-    if (ctaAnchor) {
-      ctaAnchor.style.pointerEvents = restoredAnchorPointer;
-    }
-    if (ctaNode) {
-      ctaNode.style.pointerEvents = restoredPointer;
-    }
-    if (!ctaUnderneath) {
-      setCtaOverLightBackground(false);
-      return;
-    }
-    const ctaBackground = resolveBackgroundColor(ctaUnderneath);
-    setCtaOverLightBackground(ctaBackground ? isColorLight(ctaBackground) : false);
   }, []);
 
   useEffect(() => {
@@ -165,17 +134,6 @@ export default function Navbar() {
     };
   }, [evaluateBackground]);
 
-  const handleExploreClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
-    const container = document.querySelector('[data-scroll-container="main"]') as HTMLElement | null;
-    const target = document.getElementById('hero-two');
-
-    if (container && target) {
-      event.preventDefault();
-      const targetOffset = target.offsetTop;
-      container.scrollTo({ top: targetOffset, behavior: 'smooth' });
-    }
-  }, []);
-
   return (
     <>
     <motion.nav
@@ -225,21 +183,18 @@ export default function Navbar() {
       </div>
     </div>
     {/* Fixed CTA, always visible and independent of navbar visibility */}
-  <div ref={ctaRef} className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
+    <div className="fixed top-0 z-[60] h-20 flex items-center right-[clamp(48px,8vw,160px)]">
       <a
-        href="#hero-two"
-        aria-label="Explore products"
-  className={`group relative inline-flex items-center justify-center rounded-full border border-[#E24232] px-6 py-2 text-base font-light text-white/90 transition-colors duration-300 overflow-hidden ${!visible && ctaOverLightBackground ? 'bg-black/20 backdrop-blur-md' : 'bg-transparent backdrop-blur-none'}`}
-        style={{ paddingLeft: "12px", paddingRight: "12px", paddingTop: "8px", paddingBottom: "8px" }}
-        onClick={handleExploreClick}
+        href="https://dev.vifilabs.xyz/"
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-[#2AE89B] text-sm md:text-base font-medium leading-none text-black shadow-[0_4px_16px_rgba(0,0,0,0.25)] transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-[0_0_24px_rgba(42,232,155,0.45)] outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+        style={{ paddingLeft: "20px", paddingRight: "18px", paddingTop: "10px", paddingBottom: "10px" }}
       >
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 origin-left scale-x-0 rounded-full bg-[#28E89B] transition-transform duration-500 ease-out group-hover:scale-x-100"
-        />
-        <span className="relative z-10 transition-colors font-medium duration-300 group-hover:text-black">Explore products</span>
+        Explore Testnet
+        <span aria-hidden="true">↗</span>
       </a>
-      </div>
+    </div>
     </>
   );
 }

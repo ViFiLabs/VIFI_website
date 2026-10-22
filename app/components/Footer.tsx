@@ -282,6 +282,15 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-4">
             <a
+              href="https://dev.vifilabs.xyz/"
+              aria-label="Try the ViFi testnet"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-medium tracking-wide hover:underline"
+            >
+              Testnet ↗
+            </a>
+            <a
               href="https://x.com/ViFi_Labs"
               aria-label="Visit ViFiLabs on X"
               target="_blank"
